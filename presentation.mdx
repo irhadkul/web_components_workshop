@@ -367,10 +367,59 @@ window.customElements.define("dw-input", DWInput);
 
 # HTML Templates/ Slots
 
-
 </Section>
 
 ---
+
+<Slide>
+
+# Html Templates
+- Bietet Möglichkeit "reusable" Templates zu definieren 
+
+</Slide>
+
+---
+
+<Slide>
+
+# Html Templates
+```html
+<template id="dw-template">
+    <p> Das ist ein Text </p>
+</template>
+// Bleibt auf der Seite unsichtbar
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Html Templates
+```JS
+
+    constructor(){
+       super();
+        const shadowRoot = this.attachShadow({mode: 'open'});
+        const template = document.querySelector('#dw-template');
+        const templateContent = template.content;
+        shadowRoot.appendChild(templateContent.cloneNode(true));
+    }
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Übung #4
+
+</Slide>
+
+---
+
 <Section bg={4} logo="white">
 
 # Callbacks
