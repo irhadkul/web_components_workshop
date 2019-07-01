@@ -27,17 +27,67 @@ export const themes = [theme, highlight];
 
 ---
 
-
 <Slide>
-# Warum web components
 
+# Noch Ein JS Framework?
 
-Motivation/ Einleitung
+Hier steht Bild mit viele Framework Logos
 
 </Slide>
 
+---
+
+<Slide>
+
+# Warum jetzt web componets?
+
+- Frameworks haben eigenes Weg um DOM zu erzeugen und kontrolierren
+- verlassen sich auf document.querySelector 
+- unterschiedliche vorgehnsweise 
+
+
+</Slide>
 
 ---
+
+<Slide>
+
+# was sind web components?
+
+"Web components are a set of web platform APIs that allow you to create new custom, reusable, encapsulated HTML tags to use in web pages and web apps."
+
+</Slide>
+
+---
+
+<Slide>
+
+# was bedeutet das genau?
+- Möglichkeit eigenes HTML zu definieren und erweitern
+- Kleine verschatelte Komponenten 
+- Vieles mehr
+
+```JS
+<dw-cookie visible> Wir verwenden Cookies...</dw-cookie>
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Specifications
+
+- Custom Elements
+- Shadow DOM
+- ES Modules
+- HTML Template
+
+</Slide>
+
+---
+
 <Section bg={2} logo="white">
 
 # Custom Elements
@@ -46,6 +96,144 @@ Motivation/ Einleitung
 </Section>
 
 ---
+
+<Slide>
+
+# Custom Elements / Built-in Elements
+
+<Image src="./adesso/images/Element_properties_Ancestry.png" />
+
+#### hier soll standard html element Vererbung erklärt werden
+
+</Slide>
+
+---
+
+
+<Slide>
+
+# Built-in Elements
+- Built-in Elements Technologie ermöglicht erweiterung eines HTML-Element
+- Normales HTML mit der Attribut <b>is</b> ausstatten
+#### erweitern eines input element 
+#### steht noch offen ob wir zuerst built-in erklären wollen 
+
+</Slide>
+
+---
+
+<Slide>
+
+# Built-in Elements
+ ```html
+ <input is="dw-input"></input>
+ ```
+
+</Slide>
+
+---
+
+
+
+<Slide>
+
+# Custom Elements  Boilerplate
+```JS
+class YourClassName extends HTMLElement{
+    constructor(){
+        /* define your element .... */
+    }
+}
+window.customElements.define("your-tag", YourClassName);
+```
+```html
+<your-tag></your-tag>
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements Constructor
+- Definieren eines Custom Elements
+```JS
+class YourClassName extends HTMLElement{
+    constructor(){
+        /* define your element .... */
+    }
+}
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements Registry
+
+- Registrieren der Element
+
+
+```JS
+window.customElements.define("your-tag", YourClassName);
+```
+
+</Slide>
+
+
+
+---
+
+<Slide>
+
+# Custom Elements 
+ ```html
+ <dw-input theme="blue"></dw-input>
+ ```
+
+#### beispielsweise ein custom element. HTML
+
+
+
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements 
+
+```JS
+class DWInput extends HTMLElement{
+    constructor(){
+       /*  */
+    }
+}
+window.customElements.define("dw-input", DWInput);
+
+```
+
+#### beispielsweise ein custom element. JS
+
+
+</Slide>
+
+---
+<Slide>
+
+# Custom Elements Hands-on
+
+- Definiere ein eigenes "custom" HTML Tag 
+- Schreibe ein Custom Element in JS
+
+
+</Slide>
+
+---
+
 <Section bg={3} logo="white">
 
 # Shadow DOM
