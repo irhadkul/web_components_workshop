@@ -44,6 +44,7 @@ Hier steht Bild mit viele Framework Logos
 - Frameworks haben eigenes Weg um DOM zu erzeugen und kontrolierren
 - verlassen sich auf document.querySelector 
 - unterschiedliche vorgehnsweise 
+- reagieren auf Seiten-Änderungen auf document Ebene
 
 
 </Slide>
@@ -141,6 +142,7 @@ Hier steht Bild mit viele Framework Logos
 ```JS
 class YourClassName extends HTMLElement{
     constructor(){
+        super();
         /* define your element .... */
     }
 }
@@ -161,6 +163,7 @@ window.customElements.define("your-tag", YourClassName);
 ```JS
 class YourClassName extends HTMLElement{
     constructor(){
+        super();
         /* define your element .... */
     }
 }
@@ -194,7 +197,7 @@ window.customElements.define("your-tag", YourClassName);
  <dw-input theme="blue"></dw-input>
  ```
 
-#### beispielsweise ein custom element. HTML
+
 
 
 
@@ -209,6 +212,7 @@ window.customElements.define("your-tag", YourClassName);
 ```JS
 class DWInput extends HTMLElement{
     constructor(){
+        super()
        /*  */
     }
 }
@@ -216,7 +220,7 @@ window.customElements.define("dw-input", DWInput);
 
 ```
 
-#### beispielsweise ein custom element. JS
+
 
 
 </Slide>
@@ -224,10 +228,11 @@ window.customElements.define("dw-input", DWInput);
 ---
 <Slide>
 
-# Custom Elements Hands-on
+# Übung 1
 
-- Definiere ein eigenes "custom" HTML Tag 
-- Schreibe ein Custom Element in JS
+1. Definiere ein eigenes "custom" HTML Tag 
+2. Kreiere ein Custom Element Objekt
+3. Wenn initialisiert, es soll in JS-definiertes Text rendern (z.B. eigene Name) 
 
 
 </Slide>
@@ -242,6 +247,122 @@ window.customElements.define("dw-input", DWInput);
 </Section>
 
 ---
+
+<Slide>
+  
+# Shadow DOM  
+
+"Web components are a set of web platform APIs that allow you to create new custom, reusable, <i>encapsulated</i> HTML tags to use in web pages and web apps."
+
+- Fokus auf "encapsulated" 
+
+
+</Slide>
+
+---
+
+<Slide>
+
+# Shadow DOM  
+
+  - per definition ist es möglich "encapsulated" Komponeten zu kreieren
+  - alles innerhalb eine Komponente definiert (HTML, CSS)
+    
+
+</Slide>
+
+---
+
+<Slide>
+
+<Image src="./adesso/images/shadow-root-elements.png" />
+
+    
+
+</Slide>
+
+---
+
+<Slide>
+
+```JS
+// shadow-root nodeType = 11
+// document-fragment
+```    
+- document-fragment ist vereinfachte version des document
+- eine hat kein Einflus auf das andere
+
+</Slide>
+
+---
+
+<Slide>
+    
+# Shadow DOM  
+
+```JS
+class DWInput extends HTMLElement{
+    constructor(){
+       super();
+        const shadowRoot = this.attachShadow({mode: 'open'});
+        // shadowRoot.appendChild(yourChild);
+    }
+}
+window.customElements.define("dw-input", DWInput);
+
+```
+
+
+</Slide>
+
+---
+
+<Slide>
+
+# Übung #2
+- Übung #1 mit Shadow DOM erweitern
+- Eigenes text jetzt in shadowRoot rendern
+
+</Slide>
+
+---
+
+<Slide>
+
+# Shadow DOM Styles
+- Möglichkeit um CSS zu definieren der nur für Komponente gültig ist 
+
+</Slide>
+
+---
+
+<Slide>
+
+# Shadow DOM Styles
+```JS
+
+    constructor(){
+       super();
+        const shadowRoot = this.attachShadow({mode: 'open'});
+        const style = document.createElement('style');
+        style.textContent = `p { color: red; }`;
+        shadowRoot.appendChild(style);
+    }
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Übung #3
+- Eigene shadowRoot Styles definieren
+
+</Slide>
+
+---
+
 <Section bg={5} logo="white">
 
 # HTML Templates/ Slots
