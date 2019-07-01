@@ -1,0 +1,23 @@
+{
+  "name": "web_components_workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mdx-deck": "^2.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irhadkul/web_components_workshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irhadkul/web_components_workshop/issues"
+  },
+  "homepage": "https://github.com/irhadkul/web_components_workshop#readme"
+}
