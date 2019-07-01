@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@mdx-deck/export": "^2.4.0",
+    "mdx-deck-code-surfer": "^0.5.5"
+  },
   "devDependencies": {
     "mdx-deck": "^2.4.0"
   },
   "scripts": {
+    "start": "mdx-deck presentation.mdx --no-open --port 8081",
+    "export": "mdx-deck-export pdf presentation.mdx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
