@@ -667,6 +667,78 @@ window.customElements.define("dw-input", DWInput);
 
 ---
 
+<Slide>
+
+# attributeChangedCallback
+- Ermöglicht Kontrolle über Attributen Änderungen (Add, Edit, Remove)
+- Eigene Komponenenten "native-like" machen 
+- Bietet dem Anwender Möglichkeit der Inhalt zu Ändern
+- Zum Beispiel: regagieren auf "Theme" Attribut Änderung  
+
+</Slide>
+
+---
+
+<Slide>
+
+# attributeChangedCallback
+- besteht aus zwei Teilen:
+1. callback Methode
+2. statisches get "observedAttributes"
+
+</Slide>
+
+---
+
+
+<Slide>
+
+# attributeChangedCallback
+1. callback Methode (attributeChangedCallback)
+- wird jedes mal ausgeführt bei Attributen Änderungen
+
+</Slide>
+
+---
+
+
+<Slide>
+
+# attributeChangedCallback
+1. static get observedAttributes
+- definieret auf welche Attributen die callback Methode reagieren soll
+
+</Slide>
+
+---
+
+<Slide>
+
+# attributeChangedCallback
+```JS
+static get observedAttributes(){
+    // return ist immer ein Array
+    return ['text-color']
+}
+constructor(){super}
+attributeChangedCallback(attrName, oldValue, newValue){}
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Übung #6
+- Die Komponente soll sich wie ein HTML Element Verhalten
+- Es soll entsprechend auf Attributen-Änderungen reagieren
+- Wenn der Benutzer ein Attribut z.B. "color" ändert, es soll auch in der Komponente angezeigt werden
+
+</Slide>
+
+---
+
 <Section bg={4} logo="white">
 
 # Polyfills
