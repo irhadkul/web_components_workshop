@@ -68,7 +68,7 @@ Hier steht Bild mit viele Framework Logos
 - Kleine verschatelte Komponenten 
 - Vieles mehr
 
-```JS
+```html
 <dw-cookie visible> Wir verwenden Cookies...</dw-cookie>
 ```
 
@@ -84,6 +84,26 @@ Hier steht Bild mit viele Framework Logos
 - Shadow DOM
 - ES Modules
 - HTML Template
+
+</Slide>
+
+---
+
+<Slide>
+
+# Specifications
+
+### kann ich es jetzt nutzen, wann ist es zu Leben gekommen?
+
+</Slide>
+
+---
+
+<Slide>
+
+# Specifications
+
+### Specs kurz erklären
 
 </Slide>
 
@@ -116,7 +136,6 @@ Hier steht Bild mit viele Framework Logos
 # Built-in Elements
 - Built-in Elements Technologie ermöglicht erweiterung eines HTML-Element
 - Normales HTML mit der Attribut <b>is</b> ausstatten
-#### erweitern eines input element 
 #### steht noch offen ob wir zuerst built-in erklären wollen 
 
 </Slide>
@@ -228,7 +247,7 @@ window.customElements.define("dw-input", DWInput);
 ---
 <Slide>
 
-# Übung 1
+# Übung #1
 
 1. Definiere ein eigenes "custom" HTML Tag 
 2. Kreiere ein Custom Element Objekt
@@ -374,7 +393,9 @@ window.customElements.define("dw-input", DWInput);
 <Slide>
 
 # Html Templates
+- Teil der web components Standard 
 - Bietet Möglichkeit "reusable" Templates zu definieren 
+- definiert in HTML oder JS
 
 </Slide>
 
@@ -389,6 +410,17 @@ window.customElements.define("dw-input", DWInput);
 </template>
 // Bleibt auf der Seite unsichtbar
 ```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Html Templates
+- Neues HTML Tag "template"
+- Bleibt unsichtbar bis es initialisiert ist
+- Soll mit ID ausgesttatet werden 
 
 </Slide>
 
@@ -414,7 +446,110 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
+# Html Templates
+- wie gewohnt aus document abfragen
+- desen Inhalte ins shadowRoot einfügen
+
+</Slide>
+
+---
+
+<Slide>
+
 # Übung #4
+- schreibe eigene HTML template
+- füge fie ins shadowRoot ein
+
+</Slide>
+
+---
+
+<Slide>
+
+# Html Slots
+- Teil der Template Standard
+- Bietet Möglichkeit Platzhalter zu definieren
+
+</Slide>
+
+---
+
+<Slide>
+
+# Html Slots
+- auf zwei Stellen definiert:
+1. In HTML Teil der web-Komponente
+2. In Template HTML
+
+</Slide>
+
+---
+
+<Slide>
+
+# Html Slots 
+- In dem HTML Teil der Web-Komponente definieren wir den Inhalt
+- Die sind mit der Attribut "Slot" ausgesttatet
+```html
+<dw-cookie visible> <div slot="cookie-text">Wir verwenden Cookies...</div></dw-cookie>
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Html Slots 
+- In Template definieren wir den Platzhalter
+- In Template Tag sind Slots mit eigenem Tag definiert
+- Haben entsprechend die Name gesetzt
+```html
+<template id="dw-cookieTemplate">
+    <slot name="cookie-text"></slot>
+</template>
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Html Slots in JS
+```JS
+    constructor(){
+       super();
+        const shadowRoot = this.attachShadow({mode: 'open'});
+        const template = document.querySelector('#dw-cookieTemplate');
+        const templateContent = template.content;
+        shadowRoot.appendChild(templateContent.cloneNode(true));
+    }
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Html Slots in HTML
+```html
+<template id="dw-cookieTemplate">
+    <slot name="cookie-text"></slot>
+</template>
+<dw-cookie visible> <div slot="cookie-text">Wir verwenden Cookies...</div></dw-cookie>
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Übung #5
+- Eigene Slots in Template Definieren
+- Inhalt für Slots in der Web-Komponente HTML definieren
 
 </Slide>
 
