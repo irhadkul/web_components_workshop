@@ -216,9 +216,18 @@ window.customElements.define("your-tag", YourClassName);
  <dw-input theme="blue"></dw-input>
  ```
 
+</Slide>
 
+---
 
+<Slide>
 
+# Custom Elements 
+1. Custom Elements Tags müssen immer mit "-" geschrieben werden
+2. können nicht einzelworte sein 
+
+* Falsch:  "meineKomponente" 
+* Richtig:  "meine-komponete" 
 
 </Slide>
 
@@ -563,6 +572,101 @@ window.customElements.define("dw-input", DWInput);
 </Section>
 
 ---
+
+<Slide>
+
+# Callbacks
+- Bestandteil eine Komponente
+- Ermöglichen Kontrolle bei Änderungen
+
+</Slide>
+
+---
+
+<Slide>
+
+# Callbacks
+- connectedCallback
+- disconnectedCallback
+- adoptedCallback
+- attributeChangedCallback
+
+</Slide>
+
+---
+
+<Slide>
+
+# connectedCallback
+- passiert bei jedem Einfügen, und Schieben der Komponente HTML
+- kann mehrmals aufgerufen werden
+- wenn die Komponente auf inneren oder ausseren DOM abhängig ist
+
+
+</Slide>
+
+---
+
+<Slide>
+
+# connectedCallback
+```JS
+    constructor(){
+       super();
+    }
+    connectedCallback(){
+        // bei Zugriff auf DOM 
+        // Beispiel: Berechnete Styles abfragen
+    }
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# disconnectedCallback
+- bei "disconnecten" oder löschen von der Seite 
+```JS
+    constructor(){
+       super();
+    }
+    disconnectedCallback(){
+        // Beispiel: setzte alles auf null 
+        // oder remove eventListeners
+    }
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# adoptedCallback
+- bei Schieben der Komponete zu anderen document, z.B. iframe
+- soll nur in komplexen Fällen benutzt werden wo connectedCallback nicht ausreicht
+
+
+</Slide>
+
+---
+
+<Slide>
+
+# adoptedCallback
+```JS
+    adoptedCallback(){
+        // Beispiel: 
+        // wechsel der ownerDocument
+        // HTML -> iframe mit adoptNode()  
+    }
+```
+</Slide>
+
+---
+
 <Section bg={4} logo="white">
 
 # Polyfills
