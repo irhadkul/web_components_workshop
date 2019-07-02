@@ -14,8 +14,6 @@ export const themes = [theme, highlight];
 
 </Title>
 
-
-
 ---
 
 
@@ -36,8 +34,7 @@ export const themes = [theme, highlight];
 <Slide>
 
 # Noch Ein JS Framework?
-
-Hier steht Bild mit viele Framework Logos
+![https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f](./adesso/images/JS-Frameworks.png)
 
 </Slide>
 
@@ -243,11 +240,12 @@ window.customElements.define("your-tag", YourClassName);
 <Slide>
 
 # Custom Elements 
-1. Custom Elements Tags müssen immer mit "-" geschrieben werden
+1. Custom Elements Tags müssen immer mit "-" geschrieben werden und können nicht einzelne Worte sein
 2. können nicht einzelworte sein 
 
 * Falsch:  "meineKomponente" 
 * Richtig:  "meine-komponete" 
+* Richtig:  "meine-gelbe-komponete" 
 
 </Slide>
 
@@ -801,7 +799,10 @@ attributeChangedCallback(attrName, oldValue, newValue){}
 <Slide>
 
 # Polyfills
-<Image src="./adesso/images/WC-polyfill-status.png" />
+![Source: https://www.webcomponents.org/ 
+TODO: Das Bild beschreiben
+](./adesso/images/WC-polyfill-status.png)
+
 
 </Slide>
 
@@ -926,11 +927,143 @@ https://www.webcomponents.org/polyfills
 
 ---
 
+<Slide>
+
+# Stencil
+
+>Stencil is a toolchain for building reusable, scalable Design Systems. Generate small, blazing fast, and 100% standards based Web Components that run in every browser.
+
+</Slide>
+
+---
+
+<Slide>
+
+# Stencil
+- erweitert Webcomponets mit neuen callbacks, props/attributes
+- TypeScript per Default
+- JSX oder React Style HTML
+- Implementiert Dev umgebung
+- Polyfills 
+- 100% web componetns zu Laufzeit
+
+</Slide>
+
+---
+
+<Slide>
+
+# Stencil
+```js
+import { Component, Prop, h } from '@stencil/core';
+@Component({
+  tag: 'my-first-component',
+})
+export class MyComponent {
+  // Indicate that name should be a public property on the component
+  @Prop() name: string;
+
+  render() {
+    return (
+      <p>
+        My name is {this.name}
+      </p>
+    );
+  }
+}
+
+
+```
+
+</Slide>
+
+---
+
+
+<Slide>
+
+# Stencil
+```html
+<my-first-component name="Max"></my-first-component>
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Stencil
+## Decorators
+* @Component() declares a new web component
+* @Prop() declares an exposed property/attribute
+* @State() declares an internal state of the component
+* @Watch() declares a hook that runs when a property or state changes
+* @Element() declares a reference to the host element
+* @Method() declares an exposed public method
+* @Event() declares a DOM event the component might emit
+* @Listen() listens for DOM events
+// TODO: schöner machen 
+
+</Slide>
+
+---
+<Slide>
+
+# Stencil
+## Callbacks
+* connectedCallback() 
+* disconnectedCallback() 
+* componentWillLoad() 
+* componentDidLoad() 
+* componentWillRender() 
+* componentDidRender() 
+* componentWillUpdate()
+* componentDidUpdate()
+* render()
+
+// TODO: schöner machen 
+
+</Slide>
+
+---
+
+<Slide>
+
+# Stencil
+## Stencil show-off
+// TODO: einen Stencil Projekt aufsetzten und zeigen 
+</Slide>
+
+---
+
 <Section bg={4} logo="white">
 
 # Implementation bestehende Komponetnen 
 
 
 </Section>
+
+---
+
+<Slide>
+
+# Implementation bestehende Komponetnen 
+- web components sind Valides HTML
+- lassen sich in jedes Framework einsetzen 
+- größer auswahl einzelne Komponeten z.B.
+1. https://www.webcomponents.org/elements
+2. https://www.npmjs.com/search?q=keywords:web-components
+
+</Slide>
+
+---
+
+<Slide>
+
+# Implementation bestehende Komponetnen 
+- TODO: beschreiben import in bestehendes System oder import als script zu Seite
+
+</Slide>
 
 ---
