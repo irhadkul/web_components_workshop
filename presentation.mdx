@@ -747,6 +747,65 @@ attributeChangedCallback(attrName, oldValue, newValue){}
 </Section>
 
 ---
+
+<Slide>
+
+# Polyfills
+- Kleine Bibliotheken die Browser um eine Technoglogie erweitern
+- Dadürch können z.B. ältere Versionen von Browsers profitieren
+
+</Slide>
+
+---
+
+<Slide>
+
+# Polyfills
+<Image src="./adesso/images/WC-polyfill-status.png" />
+
+</Slide>
+
+---
+
+<Slide>
+
+# Polyfills
+- Obwohl web componets "living-standard" sind, brauchen ältere Versionen oder verschiedene Browsers polyfills 
+- bester polyfill:
+https://www.webcomponents.org/polyfills
+
+</Slide>
+
+---
+
+<Slide>
+
+# Polyfills
+- können zu Performance reduzierung führen
+- manche Tehnologien lassen sich nicht "polyfillen", z.B. shadow DOM in IE 11 (Über shadyCSS möglich)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Polyfills Einbindung
+```html
+<!-- load the webcomponents loader, which injects the necessary polyfill bundle -->
+<script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+<!-- load the element -->
+<script type="module" src="my-element.js"></script>
+
+<!-- use the element -->
+<my-element></my-element>
+```
+
+</Slide>
+
+---
+
 <Section bg={4} logo="white">
 
 # Frameworks
@@ -755,6 +814,31 @@ attributeChangedCallback(attrName, oldValue, newValue){}
 </Section>
 
 ---
+
+<Slide>
+
+# Frameworks
+## Warum Frameworks?
+- 
+
+</Slide>
+
+---
+
+<Slide>
+
+# Frameworks
+## Ein paar bekante Frameworks:
+// check the names
+1. Stencil
+2. LitElement
+3. Polymer
+4. Angular Elements
+
+</Slide>
+
+---
+
 <Section bg={4} logo="white">
 
 # Implementation bestehende Komponetnen 
