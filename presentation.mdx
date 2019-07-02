@@ -1,6 +1,7 @@
 import future from "@mdx-deck/themes/future";
 import highlight from "@mdx-deck/themes/syntax-highlighter-prism";
 import { Split } from "@mdx-deck/layouts";
+import { Notes } from 'mdx-deck'
 import { Title, Slide, Section, Image, theme } from "./adesso";
 
 export const themes = [theme, highlight];
@@ -21,7 +22,12 @@ export const themes = [theme, highlight];
 <Section bg={2} logo="white">
 
 # Motivation/ Einleitung
-
+<Notes>
+    - erzählen wer wir sind
+    - warum beschäftigen wir uns mit web components
+    - fragen anderen wer die sind und was die machen
+    - stellen Agenda für heute
+</Notes>
 
 </Section>
 
@@ -93,7 +99,7 @@ Hier steht Bild mit viele Framework Logos
 
 # Specifications
 
-### kann ich es jetzt nutzen, wann ist es zu Leben gekommen?
+### TODO: über einzelne specs kurz sprechen und kurz Ablauf von spec erwähnen
 
 </Slide>
 
@@ -124,7 +130,10 @@ Hier steht Bild mit viele Framework Logos
 
 <Image src="./adesso/images/Element_properties_Ancestry.png" />
 
-#### hier soll standard html element Vererbung erklärt werden
+<Notes>
+- hier soll standard html element Vererbung erklärt werden
+</Notes>
+ 
 
 </Slide>
 
@@ -136,7 +145,7 @@ Hier steht Bild mit viele Framework Logos
 # Built-in Elements
 - Built-in Elements Technologie ermöglicht erweiterung eines HTML-Element
 - Normales HTML mit der Attribut <b>is</b> ausstatten
-#### steht noch offen ob wir zuerst built-in erklären wollen 
+#### TODO: built in slides erwietern
 
 </Slide>
 
@@ -170,6 +179,9 @@ window.customElements.define("your-tag", YourClassName);
 ```html
 <your-tag></your-tag>
 ```
+<Notes>
+- weil die Erwieterung von built ins nicht ausreicht können wir eigene Elemente erstellen
+</Notes>
 
 </Slide>
 
@@ -187,7 +199,10 @@ class YourClassName extends HTMLElement{
     }
 }
 ```
-
+<Notes>
+- erklären warum wir hier extenden müssen 
+- super() kurz erklären
+</Notes>
 </Slide>
 
 ---
@@ -202,6 +217,9 @@ class YourClassName extends HTMLElement{
 ```JS
 window.customElements.define("your-tag", YourClassName);
 ```
+<Notes>
+- in regitry kann man eigene Elemente definieren und auch abfragen welche da sind
+</Notes>
 
 </Slide>
 
@@ -215,7 +233,9 @@ window.customElements.define("your-tag", YourClassName);
  ```html
  <dw-input theme="blue"></dw-input>
  ```
-
+<Notes>
+- eigenes html, yeah.... aber ist das Valides HTML?
+</Notes>
 </Slide>
 
 ---
@@ -247,9 +267,9 @@ class DWInput extends HTMLElement{
 window.customElements.define("dw-input", DWInput);
 
 ```
-
-
-
+<Notes>
+- kleines Beispiel von JS Teil der Custom web componet 
+</Notes>
 
 </Slide>
 
@@ -262,7 +282,12 @@ window.customElements.define("dw-input", DWInput);
 2. Kreiere ein Custom Element Objekt
 3. Wenn initialisiert, es soll in JS-definiertes Text rendern (z.B. eigene Name) 
 
-
+<Notes>
+- steht noch offen welches Element wir nehmen können
+Mein Vorschlag: 
+- Visitenkarte 
+*** hat Bild, Name und Email. Das Bild hat src die später ausgetauscht werden kann und auch die Name und Email können per attributen getauscht werden 
+</Notes>
 </Slide>
 
 ---
@@ -305,7 +330,10 @@ window.customElements.define("dw-input", DWInput);
 
 <Image src="./adesso/images/shadow-root-elements.png" />
 
-    
+<Notes>
+- erklären dass das shadowRoot ein neues typ von Element ist
+- 
+</Notes>  
 
 </Slide>
 
@@ -320,6 +348,9 @@ window.customElements.define("dw-input", DWInput);
 - document-fragment ist vereinfachte version des document
 - eine hat kein Einflus auf das andere
 
+<Notes>
+- vergleich mit iframes erwähnen 
+</Notes>
 </Slide>
 
 ---
@@ -339,7 +370,9 @@ class DWInput extends HTMLElement{
 window.customElements.define("dw-input", DWInput);
 
 ```
-
+<Notes>
+- open vs closed  mode
+</Notes>
 
 </Slide>
 
@@ -359,6 +392,10 @@ window.customElements.define("dw-input", DWInput);
 
 # Shadow DOM Styles
 - Möglichkeit um CSS zu definieren der nur für Komponente gültig ist 
+
+<Notes>
+- Beispiel wie andere Framework das schaffen (css Klasse: some_ysda84874)
+</Notes>
 
 </Slide>
 
@@ -648,6 +685,9 @@ window.customElements.define("dw-input", DWInput);
 - bei Schieben der Komponete zu anderen document, z.B. iframe
 - soll nur in komplexen Fällen benutzt werden wo connectedCallback nicht ausreicht
 
+<Notes>
+- nur kurz erwähnen, ist nur in komplexen fällen zu benutzen 
+</Notes>
 
 </Slide>
 
@@ -774,6 +814,10 @@ attributeChangedCallback(attrName, oldValue, newValue){}
 - bester polyfill:
 https://www.webcomponents.org/polyfills
 
+<Notes>
+- TODO:
+</Notes>
+
 </Slide>
 
 ---
@@ -784,6 +828,10 @@ https://www.webcomponents.org/polyfills
 - können zu Performance reduzierung führen
 - manche Tehnologien lassen sich nicht "polyfillen", z.B. shadow DOM in IE 11 (Über shadyCSS möglich)
 
+<Notes>
+- shadyCSS macht das gleiche was andere framework machen, kreiert einzigartige css Klassen 
+- ist mit Vorsicht zu genießen, vor allem bei langsamere Browsers (paradox)
+</Notes>
 </Slide>
 
 ---
@@ -819,7 +867,11 @@ https://www.webcomponents.org/polyfills
 
 # Frameworks
 ## Warum Frameworks?
-- 
+
+- Erweitern Funktionalität
+- Erleichtern Aufsetzen von Dev Umgebung
+- Sparen Boilerplate Code
+
 
 </Slide>
 
@@ -829,12 +881,47 @@ https://www.webcomponents.org/polyfills
 
 # Frameworks
 ## Ein paar bekante Frameworks:
-// check the names
-1. Stencil
-2. LitElement
-3. Polymer
-4. Angular Elements
 
+1. LitElement
+2. Polymer Project
+3. Angular Elements
+4. Stencil
+
+</Slide>
+
+---
+
+<Slide>
+
+# Frameworks
+## LitElement
+</Slide>
+
+---
+
+
+<Slide>
+
+# Frameworks
+## Polymer Project
+</Slide>
+
+---
+
+
+<Slide>
+
+# Frameworks
+## Angular Elements
+</Slide>
+
+---
+
+
+<Slide>
+
+# Frameworks
+## Stencil
 </Slide>
 
 ---
