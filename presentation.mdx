@@ -153,7 +153,7 @@ export const themes = [theme, highlight];
 - HTML Modules Standard ist noch in Entwicklung
 
 <Notes>
-- Html Modules ist noch Proposal, siehe hier: https://github.com/w3c/webcomponents/blob/gh-pages/proposals/html-modules-proposal.md
+- HTML Modules ist noch Proposal, siehe hier: https://github.com/w3c/webcomponents/blob/gh-pages/proposals/html-modules-proposal.md
 
 </Notes>
 
@@ -569,7 +569,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Templates
+# HTML Templates
 - Teil der web components Standard 
 - Bietet Möglichkeit "reusable" Templates zu definieren 
 - definiert in HTML oder JS
@@ -580,7 +580,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Templates
+# HTML Templates
 ```html
 <template id="dw-template">
     <p> Das ist ein Text </p>
@@ -594,7 +594,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Templates
+# HTML Templates
 - Neues HTML Tag "template"
 - Bleibt unsichtbar bis es initialisiert ist
 - Soll mit ID ausgesttatet werden 
@@ -605,7 +605,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Templates
+# HTML Templates
 ```JS
 
     constructor(){
@@ -623,7 +623,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Templates
+# HTML Templates
 - wie gewohnt aus document abfragen
 - desen Inhalte ins shadowRoot einfügen
 
@@ -643,7 +643,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Slots
+# HTML Slots
 - Teil der Template Standard
 - Bietet Möglichkeit Platzhalter zu definieren
 
@@ -653,7 +653,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Slots
+# HTML Slots
 - auf zwei Stellen definiert:
 1. In HTML Teil der web-Komponente
 2. In Template HTML
@@ -664,7 +664,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Slots 
+# HTML Slots 
 - In dem HTML Teil der Web-Komponente definieren wir den Inhalt
 - Die sind mit der Attribut "Slot" ausgesttatet
 ```html
@@ -677,7 +677,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Slots 
+# HTML Slots 
 - In Template definieren wir den Platzhalter
 - In Template Tag sind Slots mit eigenem Tag definiert
 - Haben entsprechend die Name gesetzt
@@ -693,7 +693,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Slots in JS
+# HTML Slots in JS
 ```JS
     constructor(){
        super();
@@ -710,7 +710,7 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Html Slots in HTML
+# HTML Slots in HTML
 ```html
 <template id="dw-cookieTemplate">
     <slot name="cookie-text"></slot>
@@ -910,7 +910,7 @@ attributeChangedCallback(attrName, oldValue, newValue){}
 
 ---
 
-<Section bg={4} logo="white">
+<Section bg={6} logo="white">
 
 # Polyfills
 
@@ -988,7 +988,7 @@ https://www.webcomponents.org/polyfills
 
 ---
 
-<Section bg={4} logo="white">
+<Section bg={7} logo="white">
 
 # Frameworks
 
@@ -1240,7 +1240,7 @@ export class MyComponent {
 
 ---
 
-<Section bg={4} logo="white">
+<Section bg={8} logo="black">
 
 # Implementation bestehende Komponetnen 
 
@@ -1255,6 +1255,7 @@ export class MyComponent {
 - web components sind Valides HTML
 - lassen sich in jedes Framework einsetzen 
 - größer auswahl einzelne Komponeten z.B.
+
 1. https://www.webcomponents.org/elements
 2. https://www.npmjs.com/search?q=keywords:web-components
 
@@ -1265,7 +1266,10 @@ export class MyComponent {
 <Slide>
 
 # Implementation bestehende Komponetnen 
-- TODO: beschreiben import in bestehendes System oder import als script zu Seite
+- um bestehende Komponenenten zu importieren hat man mehrere Möglichkeiten:
+1. Als npm Paket ins Projekt importieren
+2. Als Script in HTML Document
+3. Als JS modul in eine andere JS Datei
 
 </Slide>
 
