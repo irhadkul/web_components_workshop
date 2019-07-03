@@ -1016,31 +1016,81 @@ https://www.webcomponents.org/polyfills
 # Frameworks
 ## Ein paar bekante Frameworks:
 
-1. LitElement
-2. Polymer Project
-3. Angular Elements
-4. Stencil
+1. Polymer Project
+2. Angular Elements
+3. Stencil
 
 </Slide>
 
 ---
 
-<Slide>
-
-# Frameworks
-## LitElement
-</Slide>
-
----
 
 
 <Slide>
 
 # Frameworks
 ## Polymer Project
+
+- Bibliotheken und Tools für bauen von web components
+- zwei bekanteste Librarys:
+1. lit-html
+2. LitElement
+
 </Slide>
 
 ---
+
+<Slide>
+
+# lit-html
+
+- schnelle HTML-Templating Library
+- bauen und updaten von JS HTML Templates
+- re-rendering nur von diffs
+
+</Slide>
+
+---
+
+<Slide>
+
+# lit-html
+
+```js
+const myTemplate = (name) => html`
+    <div>
+      Hi, my name is ${name}.
+    </div>
+`;
+```
+</Slide>
+
+---
+
+
+
+<Slide>
+
+# LitElement
+
+- Custom Components base class
+- erweitert die Custom Componente mit z.B. neuen Callbacks
+- Komponenten und Properties werden mit Annotations deklariert
+
+</Slide>
+
+---
+
+<Slide>
+
+# LitElement
+![Code Beispiel leider als bild da es Problemen mit mdx deck macht](./adesso/images/lit-element-beispiel.png)
+
+</Slide>
+
+---
+
+
 
 
 <Slide>
