@@ -189,9 +189,16 @@ export const themes = [theme, highlight];
 <Slide>
 
 # Built-in Elements
+- Ein Teil der Custom Componets Standard
 - Built-in Elements Technologie ermöglicht erweiterung eines HTML-Element
 - Normales HTML mit der Attribut <b>is</b> ausstatten
-#### TODO: built in slides erwietern
+
+
+<Notes>
+- Built in Elements sind ein Teil der Custom Components Specification
+- Ermöglichen erweiterung eines HTML Element
+
+</Notes>
 
 </Slide>
 
@@ -200,19 +207,96 @@ export const themes = [theme, highlight];
 <Slide>
 
 # Built-in Elements
- ```html
- <input is="dw-input"></input>
- ```
+### Normales Input Element
+```html
+ <input type="text"></input>
+```
+
+### Built-in
+```html
+ <input is="dw-input" type="text"></input>
+```
 
 </Slide>
 
 ---
 
+<Slide>
 
+# Built-in Elements
+```JS
+class YourClassName extends HTMLInputElement{
+    constructor(){
+        super();
+        this.value = "what is your name?"
+    }
+}
+window.customElements.define("your-tag", YourClassName, {extends: "input"});
+
+```
+<Notes>
+- hier sich nur auf this.value fokusieren
+- alles andere erzählen wir in custom componets Teil
+</Notes>
+
+</Slide>
+
+---
 
 <Slide>
 
-# Custom Elements  Boilerplate
+# Built-in Elements
+```html
+<input is="your-tag"></input>
+```
+![Das Bild zeigt ein built-in component](./adesso/images/built-in-example.png)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements
+- Ermöglichen ganz neues HTML Element zu kreieren
+- Wie es aussieht? (Per Default keine Styles)
+- Wie es funktioniert? (Erbt nur Stanard HTML Element Verhalten)
+- Built-in Elements bieten uns begränztes Erweiterungsmöglichkeit
+
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements  
+### Neues HTML Element
+```html
+<your-tag></your-tag>
+```
+<Notes>
+- weil die Erwieterung von built ins nicht ausreicht können wir eigene Elemente erstellen
+</Notes>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements  
+### Was kann ich damit machen?
+```html
+<your-tag></your-tag>
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements JS Boilerplate
 ```JS
 class YourClassName extends HTMLElement{
     constructor(){
@@ -222,9 +306,7 @@ class YourClassName extends HTMLElement{
 }
 window.customElements.define("your-tag", YourClassName);
 ```
-```html
-<your-tag></your-tag>
-```
+
 <Notes>
 - weil die Erwieterung von built ins nicht ausreicht können wir eigene Elemente erstellen
 </Notes>
@@ -265,6 +347,8 @@ window.customElements.define("your-tag", YourClassName);
 ```
 <Notes>
 - in regitry kann man eigene Elemente definieren und auch abfragen welche da sind
+- in dem built-in Fall kommt noch ein Parameter von typ Objekt dazu
+extends: "input" z.B.
 </Notes>
 
 </Slide>
@@ -551,7 +635,7 @@ window.customElements.define("dw-input", DWInput);
 
 # Übung #4
 - schreibe eigene HTML template
-- füge fie ins shadowRoot ein
+- füge die ins shadowRoot ein
 
 </Slide>
 
@@ -861,7 +945,7 @@ TODO: Das Bild beschreiben
 
 # Polyfills
 - Obwohl web componets "living-standard" sind, brauchen ältere Versionen oder verschiedene Browsers polyfills 
-- bester polyfill:
+- empfolenes polyfill:
 https://www.webcomponents.org/polyfills
 
 <Notes>
@@ -968,13 +1052,6 @@ https://www.webcomponents.org/polyfills
 ---
 
 
-<Slide>
-
-# Frameworks
-## Stencil
-</Slide>
-
----
 
 <Slide>
 
