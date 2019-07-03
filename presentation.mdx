@@ -12,6 +12,30 @@ export const themes = [theme, highlight];
 
 ## Web Components
 
+<Notes>
+# Lesenswert
+
+*** Specs
+- https://github.com/w3c/webcomponents
+
+*** Intro to Web components:
+- https://developer.mozilla.org/en-US/docs/Web/Web_Components
+- https://www.webcomponents.org/introduction
+- https://css-tricks.com/an-introduction-to-web-components/
+- https://dev.to/thepassle/web-components-from-zero-to-hero-4n4m
+- https://hacks.mozilla.org/2018/11/the-power-of-web-components/
+- https://developers.google.com/web/fundamentals/web-components/
+
+*** web componets Beispiele:
+- https://github.com/mdn/web-components-examples
+
+*** Frameworks:
+- https://stenciljs.com/docs/introduction
+- https://angular.io/guide/elements
+- https://lit-element.polymer-project.org/
+- https://www.polymer-project.org/
+
+</Notes>
 </Title>
 
 ---
@@ -34,7 +58,7 @@ export const themes = [theme, highlight];
 <Slide>
 
 # Noch Ein JS Framework?
-![https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f](./adesso/images/JS-Frameworks.png)
+![Das Bild zeigt viele JS Framework Logos. Source: https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f](./adesso/images/JS-Frameworks.png)
 
 </Slide>
 
@@ -67,9 +91,10 @@ export const themes = [theme, highlight];
 <Slide>
 
 # was bedeutet das genau?
-- Möglichkeit eigenes HTML zu definieren und erweitern
+- Standardiziertes Weg um eigene HTML Elemente zu definieren und erweitern
 - Kleine verschatelte Komponenten 
-- Vieles mehr
+- Reagieren auf DOM Änderungen, wie z.B. Nachladen
+- Überall einsetzbar (Frameworks, HTML Dokumenten ...)
 
 ```html
 <dw-cookie visible> Wir verwenden Cookies...</dw-cookie>
@@ -81,32 +106,56 @@ export const themes = [theme, highlight];
 
 <Slide>
 
+# History
+
+- Erste Version in 2014, Google Chrome (V0)
+- Seit Version 63, implementierte Mozilla Custom Elements und Shadow DOM
+- V1 seit Januar 2017
+- Living Standard seit 2018
+
+<Notes>
+- V0 hatte z.B. andere Methoden (createdCallback -> connectedCallback )
+
+</Notes>
+
+</Slide>
+
+
+---
+
+<Slide>
+
 # Specifications
 
 - Custom Elements
 - Shadow DOM
-- ES Modules
 - HTML Template
+- HTML Modules
+
+<Notes>
+- web components ist eine Gruppe von Technologien
+- siehe Standard: https://github.com/w3c/webcomponents
+- HTML Modules sind noch nicht LS. Nachvolger von HTML Imports
+- Specs sind maintained von unterschiedlichen Gruppen: HTML Standards, DOM Standards, CSS WG
+</Notes>
 
 </Slide>
 
 ---
 
-<Slide>
 
-# Specifications
-
-### TODO: über einzelne specs kurz sprechen und kurz Ablauf von spec erwähnen
-
-</Slide>
-
----
 
 <Slide>
 
 # Specifications
+- 4 Verschiedene Technologien die von unterschidliche Arbeitsgruppen entwicklet sind
+- 3 davon Living Standard und unterstuzt von vielen Browsers
+- HTML Modules Standard ist noch in Entwicklung
 
-### Specs kurz erklären
+<Notes>
+- Html Modules ist noch Proposal, siehe hier: https://github.com/w3c/webcomponents/blob/gh-pages/proposals/html-modules-proposal.md
+
+</Notes>
 
 </Slide>
 
