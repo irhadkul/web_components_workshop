@@ -108,10 +108,10 @@ export const themes = [theme, highlight];
 
 # History
 
-- Erste Version in 2014, Google Chrome (V0)
+- Erste Version in 2014, pushed von Polymer Team, Google (V0)
 - Seit Version 63, implementierte Mozilla Custom Elements und Shadow DOM
 - V1 seit Januar 2017
-- Living Standard seit 2018
+- Living Standard seit 2018 
 
 <Notes>
 - V0 hatte z.B. andere Methoden (createdCallback -> connectedCallback )
@@ -135,7 +135,7 @@ export const themes = [theme, highlight];
 <Notes>
 - web components ist eine Gruppe von Technologien
 - siehe Standard: https://github.com/w3c/webcomponents
-- HTML Modules sind noch nicht LS. Nachvolger von HTML Imports
+- HTML Modules sind noch nicht Living Standard. Nachvolger von HTML Imports
 - Specs sind maintained von unterschiedlichen Gruppen: HTML Standards, DOM Standards, CSS WG
 </Notes>
 
@@ -178,6 +178,7 @@ export const themes = [theme, highlight];
 
 <Notes>
 - hier soll standard html element Vererbung erklärt werden
+- in Fall von input der erbt von HTMLElement aber bringt auch eigenes Funktionalität, wie z.B. value, type usw.
 </Notes>
  
 
@@ -339,11 +340,14 @@ class YourClassName extends HTMLElement{
 
 # Custom Elements Registry
 
-- Registrieren der Element
+#### Custom Element
 
-
-```JS
+```js
 window.customElements.define("your-tag", YourClassName);
+```
+#### Built-in
+```js
+window.customElements.define("your-tag", YourClassName, {extends: "input"});
 ```
 <Notes>
 - in regitry kann man eigene Elemente definieren und auch abfragen welche da sind
@@ -403,6 +407,15 @@ window.customElements.define("dw-input", DWInput);
 </Notes>
 
 </Slide>
+
+---
+
+<Slide>
+
+# Custom Elements 
+## Demo #1
+</Slide>
+
 
 ---
 <Slide>
