@@ -68,9 +68,9 @@ export const themes = [theme, highlight];
 
 # Warum jetzt web componets?
 
-- Frameworks haben eigenes Weg um DOM zu erzeugen und kontrolierren
+- Frameworks haben eigenes Weg um DOM zu erzeugen und kontrollieren
 - verlassen sich auf document.querySelector 
-- unterschiedliche vorgehnsweise 
+- unterschiedliche Vorgehensweise 
 - reagieren auf Seiten-Änderungen auf document Ebene
 
 
@@ -91,8 +91,8 @@ export const themes = [theme, highlight];
 <Slide>
 
 # was bedeutet das genau?
-- Standardiziertes Weg um eigene HTML Elemente zu definieren und erweitern
-- Kleine verschatelte Komponenten 
+- Standardisiertes Weg um eigene HTML Elemente zu definieren und erweitern
+- Kleine verschachtelte Komponenten 
 - Reagieren auf DOM Änderungen, wie z.B. Nachladen
 - Überall einsetzbar (Frameworks, HTML Dokumenten ...)
 
@@ -108,8 +108,8 @@ export const themes = [theme, highlight];
 
 # History
 
-- Erste Version in 2014, pushed von Polymer Team, Google (V0)
-- Seit Version 63, implementierte Mozilla Custom Elements und Shadow DOM
+- erste Version in 2014, pushed von Polymer Team, Google (V0)
+- seit Version 63, implementierte Mozilla Custom Elements und Shadow DOM
 - V1 seit Januar 2017
 - Living Standard seit 2018 
 
@@ -135,7 +135,7 @@ export const themes = [theme, highlight];
 <Notes>
 - web components ist eine Gruppe von Technologien
 - siehe Standard: https://github.com/w3c/webcomponents
-- HTML Modules sind noch nicht Living Standard. Nachvolger von HTML Imports
+- HTML Modules sind noch nicht Living Standard. Nachfolger von HTML Imports
 - Specs sind maintained von unterschiedlichen Gruppen: HTML Standards, DOM Standards, CSS WG
 </Notes>
 
@@ -148,8 +148,8 @@ export const themes = [theme, highlight];
 <Slide>
 
 # Specifications
-- 4 Verschiedene Technologien die von unterschidliche Arbeitsgruppen entwicklet sind
-- 3 davon Living Standard und unterstuzt von vielen Browsers
+- 4 Verschiedene Technologien die von unterschiedliche Arbeitsgruppen entwickelt sind
+- 3 davon Living Standard und unterstützt von vielen Browsers
 - HTML Modules Standard ist noch in Entwicklung
 
 <Notes>
@@ -191,13 +191,13 @@ export const themes = [theme, highlight];
 
 # Built-in Elements
 - Ein Teil der Custom Componets Standard
-- Built-in Elements Technologie ermöglicht erweiterung eines HTML-Element
+- Built-in Elements Technologie ermöglicht Erweiterung eines HTML-Element
 - Normales HTML mit der Attribut <b>is</b> ausstatten
 
 
 <Notes>
 - Built in Elements sind ein Teil der Custom Components Specification
-- Ermöglichen erweiterung eines HTML Element
+- Ermöglichen Erweiterung eines HTML Element
 
 </Notes>
 
@@ -261,8 +261,8 @@ window.customElements.define("your-tag", YourClassName, {extends: "input"});
 # Custom Elements
 - Ermöglichen ganz neues HTML Element zu kreieren
 - Wie es aussieht? (Per Default keine Styles)
-- Wie es funktioniert? (Erbt nur Stanard HTML Element Verhalten)
-- Built-in Elements bieten uns begränztes Erweiterungsmöglichkeit
+- Wie es funktioniert? (Erbt nur stanard HTML Element Verhalten)
+- Built-in Elements bieten uns begrenztes Erweiterungsmöglichkeit
 
 </Slide>
 
@@ -276,7 +276,7 @@ window.customElements.define("your-tag", YourClassName, {extends: "input"});
 <your-tag></your-tag>
 ```
 <Notes>
-- weil die Erwieterung von built ins nicht ausreicht können wir eigene Elemente erstellen
+- weil die Erweiterung von built ins nicht ausreicht können wir eigene Elemente erstellen
 </Notes>
 
 </Slide>
@@ -378,11 +378,11 @@ extends: "input" z.B.
 
 # Custom Elements 
 1. Custom Elements Tags müssen immer mit "-" geschrieben werden und können nicht einzelne Worte sein
-2. können nicht einzelworte sein 
+2. können nicht Einzelwörter sein 
 
 * Falsch:  "meineKomponente" 
-* Richtig:  "meine-komponete" 
-* Richtig:  "meine-gelbe-komponete" 
+* Richtig:  "meine-komponente" 
+* Richtig:  "meine-gelbe-komponente" 
 
 </Slide>
 
@@ -462,7 +462,7 @@ Mein Vorschlag:
 
 # Shadow DOM  
 
-  - per definition ist es möglich "encapsulated" Komponeten zu kreieren
+  - per Definition ist es möglich "encapsulated" Komponenten zu kreieren
   - alles innerhalb eine Komponente definiert (HTML, CSS)
     
 
@@ -489,8 +489,8 @@ Mein Vorschlag:
 // shadow-root nodeType = 11
 // document-fragment
 ```    
-- document-fragment ist vereinfachte version des document
-- eine hat kein Einflus auf das andere
+- document-fragment ist vereinfachte Version des document
+- eine hat kein Einfluss auf das andere
 
 <Notes>
 - vergleich mit iframes erwähnen 
@@ -519,6 +519,7 @@ window.customElements.define("dw-input", DWInput);
 - open vs closed  mode
 - open bevorzügt 
 - in closed hat man kein Zugriff auf Inhalte in Shadow DOM, ein Beispiel von closed ist html 5 video Tag
+
 </Notes>
 
 </Slide>
@@ -539,7 +540,7 @@ window.customElements.define("dw-input", DWInput);
 
 # Übung #2
 - Übung #1 mit Shadow DOM erweitern
-- Eigenes text jetzt in shadowRoot rendern
+- Eigenes Text jetzt in shadowRoot rendern
 
 </Slide>
 
@@ -596,8 +597,8 @@ window.customElements.define("dw-input", DWInput);
 <Slide>
 
 # HTML Templates
-- Teil der web components Standard 
-- Bietet Möglichkeit "reusable" Templates zu definieren 
+- ein Teil der web components Standard 
+- bietet Möglichkeit "reusable" Templates zu definieren 
 - definiert in HTML oder JS
 
 </Slide>
@@ -623,7 +624,7 @@ window.customElements.define("dw-input", DWInput);
 # HTML Templates
 - Neues HTML Tag "template"
 - Bleibt unsichtbar bis es initialisiert ist
-- Soll mit ID ausgesttatet werden 
+- Soll mit ID ausgestattet werden 
 
 </Slide>
 
@@ -651,7 +652,7 @@ window.customElements.define("dw-input", DWInput);
 
 # HTML Templates
 - wie gewohnt aus document abfragen
-- desen Inhalte ins shadowRoot einfügen
+- dessen Inhalte ins shadowRoot einfügen
 
 </Slide>
 
@@ -660,7 +661,7 @@ window.customElements.define("dw-input", DWInput);
 <Slide>
 
 # Übung #4
-- schreibe eigene HTML template
+- schreibe eigene HTML Template
 - füge die ins shadowRoot ein
 
 </Slide>
@@ -691,8 +692,8 @@ window.customElements.define("dw-input", DWInput);
 <Slide>
 
 # HTML Slots 
-- In dem HTML Teil der Web-Komponente definieren wir den Inhalt
-- Die sind mit der Attribut "Slot" ausgesttatet
+- in HTML Teil der Web-Komponente definieren wir den Inhalt
+- das Inhalts-Element ist mit der Attribut "Slot" ausgestattet
 ```html
 <dw-cookie visible> <div slot="cookie-text">Wir verwenden Cookies...</div></dw-cookie>
 ```
@@ -704,8 +705,8 @@ window.customElements.define("dw-input", DWInput);
 <Slide>
 
 # HTML Slots 
-- In Template definieren wir den Platzhalter
-- In Template Tag sind Slots mit eigenem Tag definiert
+- in Template definieren wir den Platzhalter
+- in Template Tag sind Slots mit eigenem Tag definiert
 - Haben entsprechend die Name gesetzt
 ```html
 <template id="dw-cookieTemplate">
@@ -794,7 +795,7 @@ window.customElements.define("dw-input", DWInput);
 # connectedCallback
 - passiert bei jedem Einfügen, und Schieben der Komponente HTML
 - kann mehrmals aufgerufen werden
-- wenn die Komponente auf inneren oder ausseren DOM abhängig ist
+- wenn die Komponente auf inneren oder äußeren DOM abhängig ist
 
 
 </Slide>
@@ -839,7 +840,7 @@ window.customElements.define("dw-input", DWInput);
 <Slide>
 
 # adoptedCallback
-- bei Schieben der Komponete zu anderen document, z.B. iframe
+- bei Schieben der Komponente zu anderen document, z.B. iframe
 - soll nur in komplexen Fällen benutzt werden wo connectedCallback nicht ausreicht
 
 <Notes>
@@ -868,9 +869,9 @@ window.customElements.define("dw-input", DWInput);
 
 # attributeChangedCallback
 - Ermöglicht Kontrolle über Attributen Änderungen (Add, Edit, Remove)
-- Eigene Komponenenten "native-like" machen 
+- Eigene Komponenten "native-like" machen 
 - Bietet dem Anwender Möglichkeit der Inhalt zu Ändern
-- Zum Beispiel: regagieren auf "Theme" Attribut Änderung  
+- Zum Beispiel: reagieren auf "Theme" Attribut Änderung  
 
 </Slide>
 
@@ -881,7 +882,7 @@ window.customElements.define("dw-input", DWInput);
 # attributeChangedCallback
 - besteht aus zwei Teilen:
 1. callback Methode
-2. statisches get "observedAttributes"
+2. static get "observedAttributes"
 
 </Slide>
 
@@ -892,7 +893,7 @@ window.customElements.define("dw-input", DWInput);
 
 # attributeChangedCallback
 1. callback Methode (attributeChangedCallback)
-- wird jedes mal ausgeführt bei Attributen Änderungen
+- wird jedes Mal ausgeführt bei Attributen Änderungen
 
 </Slide>
 
@@ -903,7 +904,7 @@ window.customElements.define("dw-input", DWInput);
 
 # attributeChangedCallback
 1. static get observedAttributes
-- definieret auf welche Attributen die callback Methode reagieren soll
+- definieret auf welchen Attributen die callback Methode reagieren soll
 
 </Slide>
 
@@ -948,8 +949,8 @@ attributeChangedCallback(attrName, oldValue, newValue){}
 <Slide>
 
 # Polyfills
-- Kleine Bibliotheken die Browser um eine Technoglogie erweitern
-- Dadürch können z.B. ältere Versionen von Browsers profitieren
+- kleine Bibliotheken die Browser um eine Technologie erweitern
+- dadurch können z.B. ältere Versionen von Browsers profitieren
 
 </Slide>
 
@@ -971,7 +972,7 @@ TODO: Das Bild beschreiben
 
 # Polyfills
 - Obwohl web componets "living-standard" sind, brauchen ältere Versionen oder verschiedene Browsers polyfills 
-- empfolenes polyfill:
+- empfohlenes polyfill:
 https://www.webcomponents.org/polyfills
 
 <Notes>
@@ -985,8 +986,8 @@ https://www.webcomponents.org/polyfills
 <Slide>
 
 # Polyfills
-- können zu Performance reduzierung führen
-- manche Tehnologien lassen sich nicht "polyfillen", z.B. shadow DOM in IE 11 (Über shadyCSS möglich)
+- können zu Performance Reduzierung führen
+- manche Technologien lassen sich nicht "polyfillen", z.B. shadow DOM in IE 11 (Über shadyCSS möglich)
 
 <Notes>
 - shadyCSS macht das gleiche was andere framework machen, kreiert einzigartige css Klassen 
@@ -1040,7 +1041,7 @@ https://www.webcomponents.org/polyfills
 <Slide>
 
 # Frameworks
-## Ein paar bekante Frameworks:
+## Ein paar bekannte Frameworks:
 
 1. Polymer Project
 2. Angular Elements
@@ -1058,7 +1059,7 @@ https://www.webcomponents.org/polyfills
 ## Polymer Project
 
 - Bibliotheken und Tools für bauen von web components
-- zwei bekanteste Librarys:
+- zwei bekannteste Librarys:
 1. lit-html
 2. LitElement
 
@@ -1126,7 +1127,7 @@ const myTemplate = (name) => html`
 - Angular Elements gebaut zu web components
 - Custom components mit angular Elements features wie change detection, data binding und dynamic content (HTML)
 - Registrieren sich wie normale Custom Components 
-- können einzeln ins html eingebunden werden 
+- können einzeln ins HTML eingebunden werden 
 
 </Slide>
 
@@ -1268,7 +1269,7 @@ export class MyComponent {
 
 <Section bg={8} logo="black">
 
-# Implementation bestehende Komponetnen 
+# Implementation bestehende Komponenten 
 
 
 </Section>
@@ -1277,10 +1278,10 @@ export class MyComponent {
 
 <Slide>
 
-# Implementation bestehende Komponetnen 
+# Implementation bestehende Komponenten 
 - web components sind Valides HTML
 - lassen sich in jedes Framework einsetzen 
-- größer auswahl einzelne Komponeten z.B.
+- größer Auswahl einzelne Komponenten z.B.
 
 1. https://www.webcomponents.org/elements
 2. https://www.npmjs.com/search?q=keywords:web-components
@@ -1291,8 +1292,8 @@ export class MyComponent {
 
 <Slide>
 
-# Implementation bestehende Komponetnen 
-- um bestehende Komponenenten zu importieren hat man mehrere Möglichkeiten:
+# Implementation bestehende Komponenten  
+- um bestehende Komponenten zu importieren hat man mehrere Möglichkeiten:
 1. Als npm Paket ins Projekt importieren
 2. Als Script in HTML Document
 3. Als JS modul in eine andere JS Datei
