@@ -1,0 +1,12 @@
+dw-input {
+    color: red;
+    width: 400px;
+    height: 400px;
+    display: block;
+    font-size: 40px;
+    border: 1px black solid;
+}
+
+p {
+    font-size: 40px;
+}

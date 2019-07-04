@@ -1,3 +1,6 @@
+
+// #############  Start: Custom Elements Demo ################
+
 class DWInput extends HTMLElement {
     constructor() {
         super();
@@ -7,3 +10,10 @@ class DWInput extends HTMLElement {
     }
 }
 window.customElements.define("dw-input", DWInput);
+
+
+
+// #############  End: Custom Elements Demo ################
+
+
+
