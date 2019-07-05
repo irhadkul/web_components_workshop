@@ -1062,6 +1062,15 @@ https://www.webcomponents.org/polyfills
 
 ---
 
+<Slide>
+
+# Polyfills Einbindung
+## Demo #8
+
+</Slide>
+
+---
+
 <Section bg={7} logo="white">
 
 # Frameworks
@@ -1158,7 +1167,13 @@ const myTemplate = (name) => html`
 <Slide>
 
 # LitElement
+
 ![Code Beispiel leider als bild da es Problemen mit mdx deck macht](./adesso/images/lit-element-beispiel.png)
+
+<Notes>
+Link zu code Beispiel :
+https://lit-element.polymer-project.org/guide/start#use-litelement-typescript-decorators
+</Notes>
 
 </Slide>
 
@@ -1217,12 +1232,12 @@ const myTemplate = (name) => html`
 <Slide>
 
 # Stencil
-- erweitert Webcomponets mit neuen callbacks, props/attributes
+- erweitert web componets mit neuen callbacks, props/attributes
 - TypeScript per Default
 - JSX oder React Style HTML
 - Implementiert Dev umgebung
 - Polyfills 
-- 100% web componetns zu Laufzeit
+- 100% web components zu Laufzeit
 
 </Slide>
 
@@ -1233,22 +1248,14 @@ const myTemplate = (name) => html`
 # Stencil
 ```js
 import { Component, Prop, h } from '@stencil/core';
-@Component({
-  tag: 'my-first-component',
-})
+@Component({ tag: 'my-first-component',})
 export class MyComponent {
-  // Indicate that name should be a public property on the component
   @Prop() name: string;
-
   render() {
-    return (
-      <p>
-        My name is {this.name}
-      </p>
+    return (<p> My name is {this.name} </p>
     );
   }
 }
-
 
 ```
 
@@ -1270,36 +1277,33 @@ export class MyComponent {
 
 <Slide>
 
-# Stencil
-## Decorators
-* @Component() declares a new web component
-* @Prop() declares an exposed property/attribute
-* @State() declares an internal state of the component
-* @Watch() declares a hook that runs when a property or state changes
-* @Element() declares a reference to the host element
-* @Method() declares an exposed public method
-* @Event() declares a DOM event the component might emit
-* @Listen() listens for DOM events
-// TODO: schöner machen 
+# Stencil Decorators
+* **@Component()** declares a new web component
+* **@Prop()** declares an exposed property/attribute
+* **@State()** declares an internal state of the component
+* **@Watch()** declares a hook that runs when a property or state changes
+* **@Element()** declares a reference to the host element
+* **@Method()** declares an exposed public method
+* **@Event()** declares a DOM event the component might emit
+* **@Listen()** listens for DOM events
+
 
 </Slide>
 
 ---
 <Slide>
 
-# Stencil
-## Callbacks
-* connectedCallback() 
-* disconnectedCallback() 
-* componentWillLoad() 
-* componentDidLoad() 
-* componentWillRender() 
-* componentDidRender() 
-* componentWillUpdate()
-* componentDidUpdate()
-* render()
+# Stencil Callbacks
+* **connectedCallback()** 
+* **disconnectedCallback()** 
+* **componentWillLoad()** 
+* **componentDidLoad()** 
+* **componentWillRender()** 
+* **componentDidRender()** 
+* **componentWillUpdate()**
+* **componentDidUpdate()**
+* **render()**
 
-// TODO: schöner machen 
 
 </Slide>
 
@@ -1341,9 +1345,22 @@ export class MyComponent {
 
 # Implementation bestehende Komponenten  
 - um bestehende Komponenten zu importieren hat man mehrere Möglichkeiten:
-1. Als npm Paket ins Projekt importieren
-2. Als Script in HTML Document
-3. Als JS modul in eine andere JS Datei
+1. npm Paket ins Projekt importieren
+2. Script in HTML Document
+3. JS modul (JS import * from)
+
+</Slide>
+
+---
+
+<Slide>
+
+# Implementation bestehende Komponenten  
+## Demo
+
+<Notes>
+    - eine Komponente als Script auf der Seite einbinden und die benutzen
+</Notes>
 
 </Slide>
 

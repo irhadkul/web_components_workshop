@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom Elements</title>
+    <link rel="stylesheet" href="../global/styles.css" type="text/css" />
+</head>
+
+<body>
+    <template id="dw-template">
+        <style>
+            p {
+                color: green;
+            }
+        </style>
+
+        <p>
+            <slot name="text"></slot>
+        </p>
+
+    </template>
+
+    <dw-input text="some text" id="firstElement">
+        <span slot="text">
+            Hallo, ich bin ein Custom Element in shadow DOM
+        </span>
+    </dw-input>
+
+    <dw-input>
+        <span slot="text">
+            Hallo, ich bin noch ein Element
+        </span>
+    </dw-input>
+
+    <p> Ich bin ein Normales P Tag</p>
+
+
+    <script src="index.final.js"></script>
+    <!-- <script>
+        document.body.appendChild(document.querySelector("#firstElement"));
+    </script> -->
+</body>
+
+</html>
