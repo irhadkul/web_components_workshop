@@ -9,3 +9,6 @@
 
 ## PDF Export
 - npm run export
+
+## Presenter Mode
+- Alt + Control
