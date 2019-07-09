@@ -702,8 +702,11 @@ window.customElements.define("dw-input", DWInput);
 <Slide>
 
 # Übung #4
-- schreibe eigene HTML Template
-- füge die ins shadowRoot ein
+
+- schreibe eigene HTML Template in "uebungen/Uebung_4-HTMLTemplate/index.html"
+- Alle in JS definierte HTML Elementen schiebe in Template Element und lösche den aus JS Datei.
+- füge die HTML Template ins shadowRoot ein
+
 
 </Slide>
 
@@ -802,8 +805,11 @@ window.customElements.define("dw-input", DWInput);
 <Slide>
 
 # Übung #5
-- Eigene Slots in Template Definieren
+- Definiere zwei Slots in HTML Template, ein für das Bild und ein für Info
 - Inhalt für Slots in der Web-Komponente HTML definieren
+
+##### In Template sind die Slots mit z.B. "slot name='test' tag zu kreieren und in den Elementen selbst sollen die HTML Elementen Attribut "slot" haben ("div slot='test'")
+![Aufgabe 5](../adesso/images/Aufgabe_5.png)
 
 </Slide>
 
@@ -926,6 +932,14 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
+# Übung #6
+
+</Slide>
+
+---
+
+<Slide>
+
 # attributeChangedCallback
 - Ermöglicht Kontrolle über Attributen Änderungen (Add, Edit, Remove)
 - Eigene Komponenten "native-like" machen 
@@ -996,7 +1010,7 @@ attributeChangedCallback(attrName, oldValue, newValue){}
 
 <Slide>
 
-# Übung #6
+# Übung #7
 - Die Komponente soll sich wie ein HTML Element Verhalten
 - Es soll entsprechend auf Attributen-Änderungen reagieren
 - Wenn der Benutzer ein Attribut z.B. "color" ändert, es soll auch in der Komponente angezeigt werden
