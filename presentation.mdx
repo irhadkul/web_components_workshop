@@ -421,19 +421,30 @@ window.customElements.define("dw-input", DWInput);
 <Slide>
 
 # Übung #1
+##### Unser ziel ist es eigenes Custom Element zu bauen. Der soll als eine Visitenkarte aussehen, d.h. es sollen Infos über eine Person dargestellt werden und dazu entsprechend das Bild. Müsterbilder finden Sie unter "uebungen/global/images";
 
-1. Definiere ein eigenes "custom" HTML Tag 
-2. Kreiere ein Custom Element Objekt
-3. Wenn initialisiert, es soll in JS-definiertes Text rendern (z.B. eigene Name) 
+###### DW Visitenkarte Beispiel:
 
 ![Aufgabe 1](../adesso/images/Aufgabe_1.png)
 
-<Notes>
-- steht noch offen welches Element wir nehmen können
-Mein Vorschlag: 
-- Visitenkarte 
-*** hat Bild, Name und Email. Das Bild hat src die später ausgetauscht werden kann und auch die Name und Email können per attributen getauscht werden 
-</Notes>
+</Slide>
+
+---
+
+<Slide>
+
+# Übung #1
+
+
+1. Definiere ein eigenes "custom" HTML Tag (**dw-contact-card**) in "uebungen/Uebung_1-customElements/index.html"
+2. Kreiere ein Custom Element Objekt in JS
+3. Wenn initialisiert, es soll zwei Kind-elemente deffinieren:
+- das Bild und es entsprechend mit "src" ausstatten 
+- Absatz oder "p" Element und ihm mit z.B. eigene Name rendern
+
+##### *Um Elemente in JS zu definieren kann man z.B. "document.createElement('p')" benutzen* 
+
+
 </Slide>
 
 ---
