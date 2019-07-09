@@ -477,6 +477,7 @@ window.customElements.define("dw-input", DWInput);
 
   - per Definition ist es möglich "encapsulated" Komponenten zu kreieren
   - alles innerhalb eine Komponente definiert (HTML, CSS)
+  - document.querySelector auf Document Ebene gibt den Elementen aus Shadow DOM nicht als Ergebnis 
     
 
 </Slide>
@@ -553,7 +554,9 @@ window.customElements.define("dw-input", DWInput);
 
 # Übung #2
 - Übung #1 mit Shadow DOM erweitern
-- Eigenes Text jetzt in shadowRoot rendern
+- Bild und Absatz Elemente in Übung #1 definiert jetzt in Shadow DOM rendern
+##### Notiz: Element soll nicht entsprechend gut aussehen. Wir werden das in Übung 3 korrigieren
+![Aufgabe 2 Bild](../adesso/images/Aufgabe_2.png)
 
 </Slide>
 
@@ -563,6 +566,7 @@ window.customElements.define("dw-input", DWInput);
 
 # Shadow DOM Styles
 - Möglichkeit um CSS zu definieren der nur für Komponente gültig ist 
+- Die Styles definiert außerhalb der Shadow DOM, haben keinen Einfluss auf Elementen die sich in Shadow DOM befinden. 
 
 <Notes>
 - Beispiel wie andere Framework das schaffen (css Klasse: some_ysda84874)
@@ -603,7 +607,11 @@ window.customElements.define("dw-input", DWInput);
 <Slide>
 
 # Übung #3
-- Eigene shadowRoot Styles definieren
+- Eigene shadowRoot Styles definieren und damit das Problem das wir in Übung 2 verursacht haben korrigieren.
+1. kreiere neues styles Element in JS "document.createElement('style');"
+2. setzte dessen Inhalt auf : "img { max-width:200px; }"
+3. Füge neues Style Element ins Shadow DOM hinzu.
+
 
 </Slide>
 
