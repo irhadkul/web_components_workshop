@@ -1,66 +1,89 @@
 .slide-wrapper {
-    width: 100vw;
-    height: 100vh;
-    font-size: 32px;
-    padding: 65px 60px 47px 95px;
+  width: 100vw;
+  height: 100vh;
+  font-size: 32px;
+  padding: 65px 60px 47px 95px;
 }
 
 .slide-wrapper header {
-    color: #0071B9;
+  color: #0071b9;
 }
 
 .slide-wrapper header.white {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 .slide-wrapper header .first-line {
-    display: flex;
-    font-size: 23px;
-    line-height: 0.9em;
-    border-bottom: 2px solid #0071B9;
-    padding-bottom: 0.7em;
-    margin-right: 150px;
+  display: flex;
+  font-size: 16px;
+  line-height: 0.9em;
+  border-bottom: 1px solid #0071b9;
+  padding-bottom: 0.7em;
+  margin-right: 150px;
 }
-.slide-wrapper header.white .first-line{
-    border-bottom: 2px solid #FFFFFF;
-}
-
-.slide-wrapper header .first-line .company-name, .slide-wrapper header .first-line .current-date{
-    border-left: 2px solid #0071B9;
-    margin-left: 20px;
-    padding-left: 15px;
+.slide-wrapper header.white .first-line {
+  border-bottom: 1px solid #ffffff;
 }
 
-.slide-wrapper header.white .first-line .company-name, .slide-wrapper header.white .first-line .current-date{
-    border-left: 2px solid #FFFFFF;
+.slide-wrapper header .first-line .slide-number {
+  min-width: 50px;
+}
+
+.slide-wrapper header .first-line .company-name,
+.slide-wrapper header .first-line .current-date {
+  border-left: 1px solid #0071b9;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.slide-wrapper header.white .first-line .company-name,
+.slide-wrapper header.white .first-line .current-date {
+  border-left: 1px solid #ffffff;
 }
 
 .slide-wrapper header h1 {
-    font-size: 48px;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-weight: normal;
+  font-size: 48px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  font-weight: normal;
 }
 
 .slide-wrapper header .logo {
-    float: right;
-    margin-top: -35px;
-    margin-right: -15px;
+  float: right;
+  margin-top: -35px;
+  margin-right: -15px;
 }
 
-.slide-wrapper main{
-    margin-top: 70px;
+.slide-wrapper main {
+  margin-top: 70px;
 }
 
 .slide-wrapper main p {
-    color: rgba(0, 0, 0, 0.8);
-    font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .slide-wrapper main ul {
-    list-style-image:url("/adesso/assets/bracket.png")
+  list-style-image: url("/adesso/assets/bracket.png");
+  padding-inline-start: 22px;
 }
 
 .slide-wrapper main ul li {
-    padding-left: 0.5em;
+  padding-left: 0.5em;
+  padding-bottom: 0.25em;
+}
+
+.slide-wrapper main pre code span.token {
+  background: transparent !important;
+}
+
+.slide-wrapper code[class^=css] {
+    color: #333333;
+    background: rgb(245, 242, 240);
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.slide-wrapper pre {
+    background: transparent !important;
+    padding: 0 !important;
 }

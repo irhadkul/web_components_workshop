@@ -47,3 +47,9 @@
     flex: 530;
     margin-left: 48px;
 }
+
+.title-wrapper main p {
+    color: #2d222e;
+    font-size: 0.8em;
+    margin-left: 88px;
+}

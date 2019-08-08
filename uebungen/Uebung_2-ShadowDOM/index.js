@@ -1,3 +1,8 @@
+/**
+ * 01. TODO - mit Shadow DOM erweitern
+ * 02. TODO - alle Kind-Elemente an shadowRoot anhängen
+ */
+
 class DWContactCard extends HTMLElement {
     constructor() {
         super();
@@ -13,4 +18,4 @@ class DWContactCard extends HTMLElement {
         this.appendChild(divHolder);
     }
 }
-window.customElements.define("dw-contact-card", DWContactCard);
+customElements.define("dw-contact-card", DWContactCard);

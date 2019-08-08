@@ -1,170 +1,86 @@
 import future from "@mdx-deck/themes/future";
 import highlight from "@mdx-deck/themes/syntax-highlighter-prism";
 import { Split } from "@mdx-deck/layouts";
-import { Notes } from 'mdx-deck'
+import { Notes, Appear } from 'mdx-deck'
+import { FullScreenCode } from 'mdx-deck';
 import { Title, Slide, Section, Image, theme } from "./adesso";
 
 export const themes = [theme, highlight];
 
-<Title bg={1}>
 
-# Workshop
+<Title bg="rgb(241, 237, 233)">
 
-## Web Components
+# Web Components
+## benutzerdefinierte HTML-Elemente
 
-<Notes>
-# Lesenswert
+Workshop mit Irhad Kulanic und Lukas Korten
 
-*** Specs
-- https://github.com/w3c/webcomponents
-
-*** Intro to Web components:
-- https://developer.mozilla.org/en-US/docs/Web/Web_Components
-- https://www.webcomponents.org/introduction
-- https://css-tricks.com/an-introduction-to-web-components/
-- https://dev.to/thepassle/web-components-from-zero-to-hero-4n4m
-- https://hacks.mozilla.org/2018/11/the-power-of-web-components/
-- https://developers.google.com/web/fundamentals/web-components/
-
-*** web componets Beispiele:
-- https://github.com/mdn/web-components-examples
-
-*** Frameworks:
-- https://stenciljs.com/docs/introduction
-- https://angular.io/guide/elements
-- https://lit-element.polymer-project.org/
-- https://www.polymer-project.org/
-
-</Notes>
 </Title>
 
 ---
 
+<Section bg="#618792" logo="white">
 
-<Section bg={2} logo="white">
-
-# Motivation/ Einleitung
-<Notes>
-    - erzählen wer wir sind
-    - warum beschäftigen wir uns mit web components
-    - fragen anderen wer die sind und was die machen
-    - stellen Agenda für heute
-</Notes>
+# Ein weiteres Framework?  
 
 </Section>
 
 ---
 
-<Slide>
-
-# Noch Ein JS Framework?
-![Das Bild zeigt viele JS Framework Logos. Source: https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f](./adesso/images/JS-Frameworks.png)
-
-</Slide>
+<Section bgSrc="./adesso/images/JS-Frameworks.png" logo="white"></Section>
 
 ---
 
 <Slide>
 
-# Warum jetzt web componets?
+# Web Components    
 
-- Frameworks haben eigenes Weg um DOM zu erzeugen und kontrollieren
-- verlassen sich auf document.querySelector 
-- unterschiedliche Vorgehensweise 
-- reagieren auf Seiten-Änderungen auf document Ebene
-
-
-</Slide>
-
----
-
-<Slide>
-
-# was sind web components?
-
-"Web components are a set of web platform APIs that allow you to create new custom, reusable, encapsulated HTML tags to use in web pages and web apps."
-
-</Slide>
-
----
-
-<Slide>
-
-# was bedeutet das genau?
-- Standardisiertes Weg um eigene HTML Elemente zu definieren und erweitern
-- Kleine verschachtelte Komponenten 
-- Reagieren auf DOM Änderungen, wie z.B. Nachladen
-- Überall einsetzbar (Frameworks, HTML Dokumenten ...)
-
-```html
-<dw-cookie visible> Wir verwenden Cookies...</dw-cookie>
-```
-
-</Slide>
-
----
-
-<Slide>
-
-# History
-
-- erste Version in 2014, pushed von Polymer Team, Google (V0)
-- seit Version 63, implementierte Mozilla Custom Elements und Shadow DOM
-- V1 seit Januar 2017
-- Living Standard seit 2018 
+- Eine Gruppe von Webtechnologien
+- benutzerdefinierte und wiederverwendbare HTML-Elemente
+- in sich gekapselte Funktionalität
+- einsetzbar auf allen Webseiten und in allen Frameworks
 
 <Notes>
-- V0 hatte z.B. andere Methoden (createdCallback -> connectedCallback )
-
+# Datepicker als Beispiel nennen:
+Wieviele Datepicker wurden in den letzten Jahren immer wieder aufs neue implementiert, 
+um in dem letzten gehypten JavaScript-Framework zu funktionieren? 
+Mit Web Components soll sich das Blatt wenden: 
+Die Komponente wird einmal implementiert und kann überall wiederverwendet werden.
 </Notes>
 
 </Slide>
 
-
 ---
 
 <Slide>
 
-# Specifications
+# Die Haupttechnologien
 
-- Custom Elements
-- Shadow DOM
-- HTML Template
-- HTML Modules
+<ul>    
+    <li>Custom Elements</li>
+    <li>Shadow DOM</li>
+    <li>HTML-Templates</li>
+    <Appear>
+        <li>(ES Modules)</li>
+    </Appear>
+</ul>
 
 <Notes>
-- web components ist eine Gruppe von Technologien
 - siehe Standard: https://github.com/w3c/webcomponents
 - HTML Modules sind noch nicht Living Standard. Nachfolger von HTML Imports
 - Specs sind maintained von unterschiedlichen Gruppen: HTML Standards, DOM Standards, CSS WG
+- von unterschiedlichen Arbeitsgruppen entwickelt
+- sind Living Standard und werden von allen modernen Browsern (Ausnahme Edge)
 </Notes>
 
 </Slide>
 
 ---
 
-
-
-<Slide>
-
-# Specifications
-- 4 Verschiedene Technologien die von unterschiedliche Arbeitsgruppen entwickelt sind
-- 3 davon Living Standard und unterstützt von vielen Browsers
-- HTML Modules Standard ist noch in Entwicklung
-
-<Notes>
-- HTML Modules ist noch Proposal, siehe hier: https://github.com/w3c/webcomponents/blob/gh-pages/proposals/html-modules-proposal.md
-
-</Notes>
-
-</Slide>
-
----
-
-<Section bg={2} logo="white">
+<Section bg="#774251" logo="white">
 
 # Custom Elements
-
+## Benutzerdefinierte HTML-Elemente
 
 </Section>
 
@@ -172,85 +88,24 @@ export const themes = [theme, highlight];
 
 <Slide>
 
-# Custom Elements / Built-in Elements
+# Custom Elements
 
-<Image src="./adesso/images/Element_properties_Ancestry.png" />
+`CustomElementRegistry`
+* Controller für benutzerdefinierte Elemente
+* global über `customElements` zugreifbar
 
-<Notes>
-- hier soll standard html element Vererbung erklärt werden
-- in Fall von input der erbt von HTMLElement aber bringt auch eigenes Funktionalität, wie z.B. value, type usw.
-</Notes>
- 
+<br/>
 
-</Slide>
+`CustomElementRegistry.define()` - registriert ein neues Custom Element
 
----
-
-
-<Slide>
-
-# Built-in Elements
-- Ein Teil der Custom Componets Standard
-- Built-in Elements Technologie ermöglicht Erweiterung eines HTML-Element
-- Normales HTML mit der Attribut <b>is</b> ausstatten
-
+**Argumente**
+* Name des Elements (Ein `-` im Namen ist Pflicht)
+* Das Verhalten definierende Klassenobjekt 
 
 <Notes>
-- Built in Elements sind ein Teil der Custom Components Specification
-- Ermöglichen Erweiterung eines HTML Element
-
+    - CustomElementRegistry ist ein Controler für Custom Elements in einem Web-Dokument
+    - darüber kann ein Custom Element registriert und Informationen über ein vorhandenes abgefragt werden
 </Notes>
-
-</Slide>
-
----
-
-<Slide>
-
-# Built-in Elements
-### Normales Input Element
-```html
- <input type="text"></input>
-```
-
-### Built-in
-```html
- <input is="dw-input" type="text"></input>
-```
-
-</Slide>
-
----
-
-<Slide>
-
-# Built-in Elements
-```JS
-class YourClassName extends HTMLInputElement{
-    constructor(){
-        super();
-        this.value = "what is your name?"
-    }
-}
-window.customElements.define("your-tag", YourClassName, {extends: "input"});
-
-```
-<Notes>
-- hier sich nur auf this.value fokusieren
-- alles andere erzählen wir in custom componets Teil
-</Notes>
-
-</Slide>
-
----
-
-<Slide>
-
-# Built-in Elements
-```html
-<input is="your-tag"></input>
-```
-![Das Bild zeigt ein built-in component](./adesso/images/built-in-example.png)
 
 </Slide>
 
@@ -259,171 +114,160 @@ window.customElements.define("your-tag", YourClassName, {extends: "input"});
 <Slide>
 
 # Custom Elements
-- Ermöglichen ganz neues HTML Element zu kreieren
-- Wie es aussieht? (Per Default keine Styles)
-- Wie es funktioniert? (Erbt nur stanard HTML Element Verhalten)
-- Built-in Elements bieten uns begrenztes Erweiterungsmöglichkeit
 
-</Slide>
+**Das Klassenobjekt**
+* ES 2015 Standardsyntax für Klassen
 
----
 
-<Slide>
-
-# Custom Elements  
-### Neues HTML Element
-```html
-<your-tag></your-tag>
 ```
-<Notes>
-- weil die Erweiterung von built ins nicht ausreicht können wir eigene Elemente erstellen
-</Notes>
+class MyPopup extends HTMLElement {     
+    constructor() { 
+        super(); // muss immer als erstes aufgerufen werden
 
-</Slide>
-
----
-
-<Slide>
-
-# Custom Elements  
-### Was kann ich damit machen?
-```html
-<your-tag></your-tag>
-```
-
-</Slide>
-
----
-
-<Slide>
-
-# Custom Elements JS Boilerplate
-```JS
-class YourClassName extends HTMLElement{
-    constructor(){
-        super();
-        /* define your element .... */
-    }
-}
-window.customElements.define("your-tag", YourClassName);
-```
-
-<Notes>
-- weil die Erwieterung von built ins nicht ausreicht können wir eigene Elemente erstellen
-</Notes>
-
-</Slide>
-
----
-
-<Slide>
-
-# Custom Elements Constructor
-- Definieren eines Custom Elements
-```JS
-class YourClassName extends HTMLElement{
-    constructor(){
-        super();
-        /* define your element .... */
+        // Funktionalität des Elements
+        ...    
     }
 }
 ```
-<Notes>
-- erklären warum wir hier extenden müssen 
-- super() kurz erklären
-</Notes>
+
 </Slide>
 
 ---
 
 <Slide>
 
-# Custom Elements Registry
+# Custom Elements
 
-#### Custom Element
+**Zwei Arten**
+* autonome Custom Elements
+* erweiterte Standardelemente (built-in elements)
 
-```js
-window.customElements.define("your-tag", YourClassName);
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements
+
+**Autonome Custom Elements**
+* erben direkt vom `HTMLElement`
+* nicht von Standardelementen wie z.B. `HTMLInputElement`
+* Name kann als Tag verwendet werden
+
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements
+
 ```
-#### Built-in
-```js
-window.customElements.define("your-tag", YourClassName, {extends: "input"});
-```
-<Notes>
-- in regitry kann man eigene Elemente definieren und auch abfragen welche da sind
-- in dem built-in Fall kommt noch ein Parameter von typ Objekt dazu
-extends: "input" z.B.
-</Notes>
-
-</Slide>
-
-
-
----
-
-<Slide>
-
-# Custom Elements 
- ```html
- <dw-input theme="blue"></dw-input>
- ```
-<Notes>
-- eigenes html, yeah.... aber ist das Valides HTML?
-</Notes>
-</Slide>
-
----
-
-<Slide>
-
-# Custom Elements 
-1. Custom Elements Tags müssen immer mit "-" geschrieben werden und können nicht einzelne Worte sein
-2. können nicht Einzelwörter sein 
-
-* Falsch:  "meineKomponente" 
-* Richtig:  "meine-komponente" 
-* Richtig:  "meine-gelbe-komponente" 
-
-</Slide>
-
----
-
-<Slide>
-
-# Custom Elements 
-
-```JS
-class DWInput extends HTMLElement{
-    constructor(){
-        super()
-       /*  */
-    }
+class MyPopup extends HTMLElement {     
+    constructor() { ... }
 }
-window.customElements.define("dw-input", DWInput);
 
+customElements.define('my-popup', MyPopup);
 ```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements
+
+Kann mit dem Namen `my-popup` erzeugt werden
+* JavaScript
+```
+document.createElement('my-popup');
+```
+* HTML
+```
+<my-popup></my-popup>
+```
+</Slide>
+
+---
+
+<Slide>
+
+# Custom Elements
+
+**Erweiterte Standardelemente (Built-in Elements)**
+* erben von Standardelementen
+* Beim Erstellen Angabe des erweiterten Standardelement-Tags erforderlich
+* Mit dem Attribut `is` wird der Name des Elements angegeben
+
+</Slide>
+
+---
+
+<Image src="./adesso/images/Element_properties_Ancestry.png" width="80vw"/>
+
 <Notes>
-- kleines Beispiel von JS Teil der Custom web componet 
+- hier soll die Vererbung erklärt werden
+- HTMLInputElement erbt von HTMLElement und bringt eigene Funktionalität mit, z.B. value, type usw.
 </Notes>
 
+---
+
+
+<Slide>
+
+# Custom Elements
+
+```
+class MyAlert extends HTMLParagraphElement { 
+    constructor() { ... } 
+}
+
+customElements.define('my-alert', MyAlert, { extends: 'p' });
+```
+
 </Slide>
 
 ---
 
 <Slide>
 
-# Custom Elements 
-## Demo #1
+# Custom Elements
+
+Beim Erzeugen muss das Attribut `is` angegeben werden 
+
+* JavaScript
+```
+document.createElement('p', { is: 'my-alert' });
+```
+
+* HTML
+```
+<p is="my-alert"></p>
+```
+
 </Slide>
 
+---
+
+<Section bg="#618792" logo="white">
+
+# DEMO 1
+## Custom Element   
+
+</Section>
 
 ---
+
 <Slide>
 
-# Übung #1
-##### Unser ziel ist es eigenes Custom Element zu bauen. Der soll als eine Visitenkarte aussehen, d.h. es sollen Infos über eine Person dargestellt werden und dazu entsprechend das Bild. Müsterbilder finden Sie unter "uebungen/global/images";
+# Custom Elements
+## Übung 1 - Visitenkarte
 
-###### DW Visitenkarte Beispiel:
+Implementiert eine Visitenkarte als ein **automares Custom Element**. 
+Die Visitenkarte soll zunächst einen beliebigen Namen und eines der Bilder aus dem Verzeichnis `uebungen/global/images/` anzeigen.
+Als Einstiegspunkt nutzt bitte die Datei `Uebung_1/index.js`. In dieser Datei ist auch eine kleine Anleitung für die Übung hinterlegt.
 
 ![Aufgabe 1](../adesso/images/Aufgabe_1.png)
 
@@ -431,108 +275,89 @@ window.customElements.define("dw-input", DWInput);
 
 ---
 
-<Slide>
-
-# Übung #1
-
-
-1. Definiere ein eigenes "custom" HTML Tag (**dw-contact-card**) in "uebungen/Uebung_1-customElements/index.html"
-2. Kreiere ein Custom Element Objekt in JS
-3. Wenn initialisiert, es soll zwei Kind-elemente deffinieren:
-- das Bild und es entsprechend mit "src" ausstatten 
-- Absatz oder "p" Element und ihm mit z.B. eigene Name rendern
-
-##### *Um Elemente in JS zu definieren kann man z.B. "document.createElement('p')" benutzen* 
-
-
-</Slide>
-
----
-
-<Section bg={3} logo="white">
+<Section bg="#774251" logo="white">
 
 # Shadow DOM
-
+## Kapselung von CSS und HTML
 
 </Section>
 
 ---
 
 <Slide>
-  
-# Shadow DOM  
-
-"Web components are a set of web platform APIs that allow you to create new custom, reusable, <i>encapsulated</i> HTML tags to use in web pages and web apps."
-
-- Fokus auf "encapsulated" 
-
-
-</Slide>
-
----
-
-<Slide>
 
 # Shadow DOM  
 
-  - per Definition ist es möglich "encapsulated" Komponenten zu kreieren
-  - alles innerhalb eine Komponente definiert (HTML, CSS)
-  - document.querySelector auf Document Ebene gibt den Elementen aus Shadow DOM nicht als Ergebnis 
+* ein isollierter *Subtree* mit eigenem Markup und Styling
+* wird unabhängig vom DOM des Hauptdokuments gerendert
+* kolliediert nicht mit Skripten und Styles des Hauptdokuments
+* Elemente im Shadow DOM sind über `document.querySelector()` nicht zugreifbar
     
-
-</Slide>
-
----
-
-<Slide>
-
-<Image src="./adesso/images/shadow-root-elements.png" />
-
 <Notes>
-- erklären dass das shadowRoot ein neues typ von Element ist
-- 
-</Notes>  
-
-</Slide>
-
----
-
-<Slide>
-
-```JS
-// shadow-root nodeType = 11
-// document-fragment
-```    
-- document-fragment ist vereinfachte Version des document
-- eine hat kein Einfluss auf das andere
-
-<Notes>
-- vergleich mit iframes erwähnen 
+- Skripte und Styles können angewendet werden, ohne dass sie mit anderen Teilen des Dokuments kollidieren
 </Notes>
+
 </Slide>
 
 ---
 
 <Slide>
-    
+
 # Shadow DOM  
 
-```JS
-class DWInput extends HTMLElement{
-    constructor(){
-       super();
-        const shadowRoot = this.attachShadow({mode: 'open'});
-        // shadowRoot.appendChild(yourChild);
-    }
-}
-window.customElements.define("dw-input", DWInput);
+<Split>
+
+![Browser](./adesso/images/Shadow-DOM-Browser.png)
+
+![Entwicklertools](./adesso/images/Shadow-DOM-Entwicklertools.png)
+
+</Split>
+
+<Notes>
+- shadow-root nodeType = 11
+- document-fragment  
+- document-fragment ist eine vereinfachte Version des document
+- das eine hat keinen Einfluss auf das andere
+- Vergleich mit iFrames 
+</Notes>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Shadow DOM  
+
+* **Shadow host** - Der DOM-Knoten, an dem das Shadow DOM hängt
+* **Shadow tree** - Der DOM-Tree (Struktur) des Shadow DOM
+* **Shadow boundary** - Der Geltungsbereich des Shadow DOM
+* **Shadow root** - Der Root-Knoten des DOM-Tree 
+
+</Slide>
+
+---
+
+<Slide>
+
+# Shadow DOM
 
 ```
-<Notes>
+class MyComponent extends HTMLElement {    
+    constructor() {
+        super();
+        
+        this.attachShadow({ mode: 'open' });        
+        const childElement = document.createElement('p');
+        this.shadowRoot.appendChild(childElement);               
+    }
+}
+customElements.define("my-component", MyComponent);
+```
 
-- open vs closed  mode
-- open bevorzügt 
-- in closed hat man kein Zugriff auf Inhalte in Shadow DOM, ein Beispiel von closed ist html 5 video Tag
+<Notes>
+Unterschied zwischen 'open' und 'closed': 
+Mit 'open' kann über shadowRoot auf Elemente zugegriffen werden, mit 'closed' nicht
 
 </Notes>
 
@@ -542,20 +367,32 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Shadow DOM  
-## Demo #2
+# Shadow DOM
+* `open` vs `closed`
 
+![](./adesso/images/Shadow-DOM-closed.gif)
 
 </Slide>
 
 ---
 
+<Section bg="#618792" logo="white">
+
+# DEMO 2
+## Shadow DOM 
+
+</Section>
+
+---
+
 <Slide>
 
-# Übung #2
-- Übung #1 mit Shadow DOM erweitern
-- Bild und Absatz Elemente in Übung #1 definiert jetzt in Shadow DOM rendern
-##### Notiz: Element soll nicht entsprechend gut aussehen. Wir werden das in Übung 3 korrigieren
+# Shadow DOM
+## Übung 2 - Visitenkarte mit Shadow DOM erweitern
+
+In dieser Übung soll das bereits entwickelte Custom Element `DWContactCard` mit Shadow DOM erweitert werden.
+Einstiegsdatei mit zusätzlichen Hinweisen: `uebungen/Uebung_2/index.js`
+
 ![Aufgabe 2 Bild](../adesso/images/Aufgabe_2.png)
 
 </Slide>
@@ -564,9 +401,10 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Shadow DOM Styles
-- Möglichkeit um CSS zu definieren der nur für Komponente gültig ist 
-- Die Styles definiert außerhalb der Shadow DOM, haben keinen Einfluss auf Elementen die sich in Shadow DOM befinden. 
+# Shadow DOM - Styles
+
+- Im Shadow DOM definiertes CSS wirkt sich nur auf angehängte Elemente aus 
+- globales CSS hat keinen Einfluss auf Elemente im Shadow DOM 
 
 <Notes>
 - Beispiel wie andere Framework das schaffen (css Klasse: some_ysda84874)
@@ -578,29 +416,30 @@ window.customElements.define("dw-input", DWInput);
 
 <Slide>
 
-# Shadow DOM Styles
-```JS
+# Shadow DOM - Styles
 
-    constructor(){
-       super();
-        const shadowRoot = this.attachShadow({mode: 'open'});
-        const style = document.createElement('style');
-        style.textContent = `p { color: red; }`;
-        shadowRoot.appendChild(style);
-    }
+```
+constructor(){
+    super();
+    
+    const style = document.createElement('style');
+    style.textContent = `p { color: red; }`;
+    
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(style);
+}
 ```
 
 </Slide>
 
 ---
 
-<Slide>
+<Section bg="#618792" logo="white">
 
-# Shadow DOM  Styles
-## Demo #3
+# DEMO 3
+## Shadow DOM Styles
 
-
-</Slide>
+</Section>
 
 ---
 

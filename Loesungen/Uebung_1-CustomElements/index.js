@@ -13,4 +13,4 @@ class DWContactCard extends HTMLElement {
         this.appendChild(divHolder);
     }
 }
-window.customElements.define("dw-contact-card", DWContactCard);
+customElements.define("dw-contact-card", DWContactCard);

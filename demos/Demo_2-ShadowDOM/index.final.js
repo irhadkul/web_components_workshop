@@ -2,10 +2,10 @@ class DWInput extends HTMLElement {
     constructor() {
         super();
         const pElement = document.createElement('p');
-        pElement.textContent = "Hallo, ich bin ein Custom Element in shadow DOM";
+        pElement.textContent = "Hallo, ich bin ein p-Element im Shadow DOM";
         // Shadow DOM
-        const shadowRoot = this.attachShadow({ mode: 'open' });
-        shadowRoot.appendChild(pElement);
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.appendChild(pElement);
     }
 }
-window.customElements.define("dw-input", DWInput);
+customElements.define("dw-input", DWInput);
