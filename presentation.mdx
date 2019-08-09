@@ -437,7 +437,7 @@ constructor(){
 <Section bg="#618792" logo="white">
 
 # DEMO 3
-## Shadow DOM Styles
+## Shadow DOM - Styles
 
 </Section>
 
@@ -445,20 +445,21 @@ constructor(){
 
 <Slide>
 
-# Übung #3
-- Eigene shadowRoot Styles definieren und damit das Problem das wir in Übung 2 verursacht haben korrigieren.
-1. kreiere neues styles Element in JS "document.createElement('style');"
-2. setzte dessen Inhalt auf : "img { max-width:200px; }"
-3. Füge neues Style Element ins Shadow DOM hinzu.
+# Shadow DOM - Styles
+
+## Übung 3 - CSS Kapselung
+Eigenes `style`-Element auf der `shadowRoot` definieren und damit das Darstellungsproblem aus der Übung 2 korrigieren.
+Die Einstiegsdatei für diese Übung ist `uebungen/Uebung_3-ShadowDOM_Styles/index.js`.
 
 
 </Slide>
 
 ---
 
-<Section bg={5} logo="white">
+<Section bg="#774251" logo="white">
 
-# HTML Templates/ Slots
+# HTML Templates und Slots
+## Einsatz von `<template>` und `<slot>` Elementen
 
 </Section>
 
@@ -467,9 +468,18 @@ constructor(){
 <Slide>
 
 # HTML Templates
-- ein Teil der web components Standard 
-- bietet Möglichkeit "reusable" Templates zu definieren 
-- definiert in HTML oder JS
+- wiederverwendbare Markup-Vorlagen
+- sind im HTML-Dokument enthalten, werden aber vom Browser nicht angezeigt
+- dienen als Grundlage für wiederverwendbare Elemente 
+- können sehr effizient geklont werden
+- können im HTML oder JavaScript definiert werden
+
+<Notes>
+
+Werde vom HTML-Parser ignoriert:  
+Bilder werden nicht geladen, Skripte nicht ausgeführt, eingebundene Custom-Elements nicht initialisiert und aktualisiert usw.
+
+</Notes>
 
 </Slide>
 
@@ -478,11 +488,20 @@ constructor(){
 <Slide>
 
 # HTML Templates
+- neuer HTML-Tag `<template>`
+- bleibt unsichtbar bis es initialisiert wurde
+- benötigt eine `id`
+
+**HTML**
 ```html
+<!-- Bleibt auf der Seite unsichtbar -->
 <template id="dw-template">
-    <p> Das ist ein Text </p>
+    <p>Das ist ein Text</p>
 </template>
-// Bleibt auf der Seite unsichtbar
+```
+**JavaScript**
+```
+const template = document.querySelector('#dw-template');
 ```
 
 </Slide>
@@ -492,49 +511,29 @@ constructor(){
 <Slide>
 
 # HTML Templates
-- Neues HTML Tag "template"
-- Bleibt unsichtbar bis es initialisiert ist
-- Soll mit ID ausgestattet werden 
-
-</Slide>
-
----
-
-<Slide>
-
-# HTML Templates
-```JS
-
+```
+...
     constructor(){
        super();
-        const shadowRoot = this.attachShadow({mode: 'open'});
-        const template = document.querySelector('#dw-template');
-        const templateContent = template.content;
-        shadowRoot.appendChild(templateContent.cloneNode(true));
+        this.attachShadow({mode: 'open'});
+
+        const template = document.querySelector('#dw-template');        
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
+...    
 ```
 
 </Slide>
 
----
-
-<Slide>
-
-# HTML Templates
-- wie gewohnt aus document abfragen
-- dessen Inhalte ins shadowRoot einfügen
-
-</Slide>
 
 ---
 
-<Slide>
+<Section bg="#618792" logo="white">
 
-# HTML Templates
-## Demo #4
+# DEMO 4
+## HTML Templates
 
-
-</Slide>
+</Section>
 
 ---
 

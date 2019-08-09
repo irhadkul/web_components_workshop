@@ -1,4 +1,10 @@
-class DWContactCard extends HTMLElement {
+/**
+ * 01. TODO - Erstelle mit document.createElement() ein neues style-Element
+ * 02. TODO - Setze auf dem neuen style-Element die Formtatierung für das img-Element: img { max-width: 200px; }
+ * 03. TODO - Das style-Element an die shadowRoot anhängen
+ */
+
+ class DWContactCard extends HTMLElement {
     constructor() {
         super();
         const pElement = document.createElement('p');
@@ -11,11 +17,10 @@ class DWContactCard extends HTMLElement {
         divHolder.appendChild(pElement);
 
         // Shadow DOM
-        const shadowRoot = this.attachShadow({ mode: 'open' });
+        this.attachShadow({ mode: 'open' });
 
-
-        shadowRoot.appendChild(imgElement);
-        shadowRoot.appendChild(divHolder);
+        this.shadowRoot.appendChild(imgElement);
+        this.shadowRoot.appendChild(divHolder);
     }
 }
-window.customElements.define("dw-contact-card", DWContactCard);
+customElements.define("dw-contact-card", DWContactCard);

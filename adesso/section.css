@@ -46,3 +46,7 @@
   margin-block-start: 0;
   color: rgb(250,250,250);
 }
+
+.section-wrapper code[class^=css] {
+  color: rgba(250,250,250, 0.6);
+}

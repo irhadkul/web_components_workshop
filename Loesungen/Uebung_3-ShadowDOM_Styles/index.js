@@ -13,12 +13,11 @@ class DWContactCard extends HTMLElement {
         divHolder.appendChild(pElement);
 
         // Shadow DOM
-        const shadowRoot = this.attachShadow({ mode: 'open' });
+        this.attachShadow({ mode: 'open' });
 
-
-        shadowRoot.appendChild(style);
-        shadowRoot.appendChild(imgElement);
-        shadowRoot.appendChild(divHolder);
+        this.shadowRoot.appendChild(style);
+        this.shadowRoot.appendChild(imgElement);
+        this.shadowRoot.appendChild(divHolder);
     }
 }
 window.customElements.define("dw-contact-card", DWContactCard);
