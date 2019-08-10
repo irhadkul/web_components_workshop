@@ -405,6 +405,14 @@ Einstiegsdatei mit zusätzlichen Hinweisen: `uebungen/Uebung_2/index.js`
 
 - Im Shadow DOM definiertes CSS wirkt sich nur auf angehängte Elemente aus 
 - globales CSS hat keinen Einfluss auf Elemente im Shadow DOM 
+- Mit `:host` - Das Wurzel-Element der Web Component selektieren
+
+```css
+:host {
+    background: white;
+    ...
+}
+```
 
 <Notes>
 - Beispiel wie andere Framework das schaffen (css Klasse: some_ysda84874)
@@ -489,7 +497,7 @@ Bilder werden nicht geladen, Skripte nicht ausgeführt, eingebundene Custom-Elem
 
 # HTML Templates
 - neuer HTML-Tag `<template>`
-- bleibt unsichtbar bis es initialisiert wurde
+- bleibt auf der Seite unsichtbar bis es initialisiert wurde
 - benötigt eine `id`
 
 **HTML**
@@ -513,14 +521,36 @@ const template = document.querySelector('#dw-template');
 # HTML Templates
 ```
 ...
-    constructor(){
-       super();
-        this.attachShadow({mode: 'open'});
+constructor(){
+    super();
+    this.attachShadow({mode: 'open'});
 
-        const template = document.querySelector('#dw-template');        
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
-    }
+    const template = document.querySelector('#dw-template');        
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+}
 ...    
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# HTML Templates
+
+```
+const myTemplate =  document.createElement('template');
+myTemplate.innerHTML = `
+    <p>I'm an encapsulated paragraph in a web component</p>
+`;
+...
+constructor(){
+    super();
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.appendChild(myTemplate.content.cloneNode(true));
+}
+...
 ```
 
 </Slide>
@@ -539,22 +569,15 @@ const template = document.querySelector('#dw-template');
 
 <Slide>
 
-# Übung #4
+# HTML Templates
+## Übung 4 - HTML Template verwenden
 
-- schreibe eigene HTML Template in "uebungen/Uebung_4-HTMLTemplate/index.html"
-- Alle in JS definierte HTML Elementen schiebe in Template Element und lösche den aus JS Datei.
-- füge die HTML Template ins shadowRoot ein
+In dieser Übung wollen wir uns mit Templates befassen. Lagert alle Kindelemente aus der `DWContractCard`
+in ein Template aus. Das Template soll im HTML-Dokument `index.html` implementiert und in die 
+JavaScript-Datei `index.js` an die `shadowRoot` angehängt werden.
 
+Einstieg: `uebungen/Uebung_4-HTMLTemplate/index.js`
 
-</Slide>
-
----
-
-<Slide>
-
-# HTML Slots
-- Teil der Template Standard
-- Bietet Möglichkeit Platzhalter zu definieren
 
 </Slide>
 
@@ -563,36 +586,70 @@ const template = document.querySelector('#dw-template');
 <Slide>
 
 # HTML Slots
-- auf zwei Stellen definiert:
-1. In HTML Teil der web-Komponente
-2. In Template HTML
 
-</Slide>
+- Markup-*Einschübe* an vordefinierten Stellen im `<template>`
 
----
-
-<Slide>
-
-# HTML Slots 
-- in HTML Teil der Web-Komponente definieren wir den Inhalt
-- das Inhalts-Element ist mit der Attribut "Slot" ausgestattet
 ```html
-<dw-cookie visible> <div slot="cookie-text">Wir verwenden Cookies...</div></dw-cookie>
+<template id="info-alert-template">
+    <div>
+        <h1>Info</h1>
+        <slot></slot>
+    </div>
+</template>
+
+<my-info-alert>
+    <p>Eine ganz wichtige Meldung</p>
+</my-info-alert>
+
 ```
 
 </Slide>
 
 ---
 
+
 <Slide>
 
-# HTML Slots 
-- in Template definieren wir den Platzhalter
-- in Template Tag sind Slots mit eigenem Tag definiert
-- Haben entsprechend die Name gesetzt
+# HTML Slots
+
+- Markup-*Einschübe* an vordefinierten Stellen im `<template>`
+
 ```html
-<template id="dw-cookieTemplate">
-    <slot name="cookie-text"></slot>
+<template id="info-alert-template">
+    <div>
+        <h1>Info</h1>
+        <slot><p>Kein Inhalt ...</p></slot> <!-- Defaultwert -->
+    </div>
+</template>
+
+<my-info-alert>
+    <p>Eine ganz wichtige Meldung</p>
+</my-info-alert>
+
+```
+
+</Slide>
+
+---
+
+
+<Slide>
+
+# HTML Slots
+
+- mehrere `<slot>`-Tags innerhalb eines Templates möglich
+- mit dem Attribut `name` den Namen des `<slot>` definieren
+
+```html
+<template id="info-alert-template">
+    <div>
+        <slot name="title">
+            <h1>Info</h1>
+        </slot>
+        <slot name="message">
+            <p>Kein Inhalt ...</p>
+        </slot>
+    </div>
 </template>
 ```
 
@@ -602,41 +659,29 @@ const template = document.querySelector('#dw-template');
 
 <Slide>
 
-# HTML Slots in JS
-```JS
-    constructor(){
-       super();
-        const shadowRoot = this.attachShadow({mode: 'open'});
-        const template = document.querySelector('#dw-cookieTemplate');
-        const templateContent = template.content;
-        shadowRoot.appendChild(templateContent.cloneNode(true));
-    }
-```
-
-</Slide>
-
----
-
-<Slide>
-
-# HTML Slots in HTML
-```html
-<template id="dw-cookieTemplate">
-    <slot name="cookie-text"></slot>
-</template>
-<dw-cookie visible> <div slot="cookie-text">Wir verwenden Cookies...</div></dw-cookie>
-```
-
-</Slide>
-
----
-
-<Slide>
-
 # HTML Slots
-## Demo #5
+- mit `slot="name-des-slots"` den passenden `<slot>`ansprechen
+
+
+```html
+<my-info-alert>
+    <h1 slot="title">Benutzerdaten aktualisiert</h1>
+    <p slot="message">
+        Die Benutzerdaten für Max Mustermann konnten ...
+    </p>
+</my-info-alert>
+```
 
 </Slide>
+
+---
+
+<Section bg="#618792" logo="white">
+
+# DEMO 5
+## HTML Slots
+
+</Section>
 
 ---
 

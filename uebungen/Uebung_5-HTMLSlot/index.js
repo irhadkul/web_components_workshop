@@ -9,4 +9,4 @@ class DWContactCard extends HTMLElement {
 
     }
 }
-window.customElements.define("dw-contact-card", DWContactCard);
+customElements.define("dw-contact-card", DWContactCard);
