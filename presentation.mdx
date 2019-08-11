@@ -1129,10 +1129,10 @@ adoptedCallback() {
 
 ---
 
-<Section bg={6} logo="white">
+<Section bg="#774251" logo="white">
 
-# Polyfills
-
+# Browser-Support & Polyfills
+## Support für Web Components
 
 </Section>
 
@@ -1140,9 +1140,12 @@ adoptedCallback() {
 
 <Slide>
 
-# Polyfills
-- kleine Bibliotheken die Browser um eine Technologie erweitern
-- dadurch können z.B. ältere Versionen von Browsers profitieren
+# Browser-Support
+
+- alle Webkit und Chromium Browser (Chrome, Safari, Opera)
+- Firefox ab Version 63
+- Edge arbeitet aktiv an der Implementierung
+- IE kein Support
 
 </Slide>
 
@@ -1150,25 +1153,43 @@ adoptedCallback() {
 
 <Slide>
 
-# Polyfills
-![Source: https://www.webcomponents.org/ 
-TODO: Das Bild beschreiben
-](./adesso/images/WC-polyfill-status.png)
+# Browser-Support
 
+![Browser-Support Source: https://www.webcomponents.org/](./adesso/images/WC-polyfill-status.png)
 
 </Slide>
 
 ---
-
 <Slide>
 
-# Polyfills
-- Obwohl web componets "living-standard" sind, brauchen ältere Versionen oder verschiedene Browsers polyfills 
-- empfohlenes polyfill:
-https://www.webcomponents.org/polyfills
+# Browser-Support
+
+**Zwei Probleme:**
+- kein Support für ES2015 Features, wie Klassen und Module
+- Web Component APIs werden nicht unterstützt
 
 <Notes>
-- TODO:
+    IE unterstützt Klassen und Module nicht
+    Edge hat aktuell noch keinen vollständigen Support für Web Component APIs
+</Notes>
+
+</Slide>
+
+
+---
+
+<Slide>
+
+# Browser-Support
+
+**Lösung:**
+- Support für ES2015 Features: **Babel** oder **Typescript** einsetzen
+- Web Component APIs unterstützten: **Polyfills** einsetzen
+
+<Notes>
+    Es gibt verschiedene Wege, um JavaScript von ES2015 zu ES5 zu übersetzen: Babel und Typescript sind die gängisten.
+    Transpiling werden wir uns aus Zeitgründen nicht näher anschauen, sei hier nur erwähnt, dass es möglich ist.
+    Weiter geht's mit Polyfills.
 </Notes>
 
 </Slide>
@@ -1178,28 +1199,36 @@ https://www.webcomponents.org/polyfills
 <Slide>
 
 # Polyfills
-- können zu Performance Reduzierung führen
-- manche Technologien lassen sich nicht "polyfillen", z.B. shadow DOM in IE 11 (Über shadyCSS möglich)
+- kleine JavaScript-Bibliotheken, welche die fehlenden Technologien im Browser nachbilden
+- ältere Browser Versionen können somit unterstützt werden
+- können zu Einschränkungen der Performanz führen
+- einige Technologien lassen sich nicht nachbilden, z.B. shadow DOM im IE 11
+
+Empfohlene Polyfills: https://www.webcomponents.org/polyfills
 
 <Notes>
-- shadyCSS macht das gleiche was andere framework machen, kreiert einzigartige css Klassen 
-- ist mit Vorsicht zu genießen, vor allem bei langsamere Browsers (paradox)
+    shadow DOM kann im IE 11 mit shadyCSS nachgebildet werden.
+    Ist jedoch mit Vorsicht zu genießen, vor allem in langsamen Browsern (paradox)
 </Notes>
+
 </Slide>
 
 ---
 
 <Slide>
 
-# Polyfills Einbindung
+# Polyfills 
+
+**Einbindung**
+- `webcomponents-loader` lädt das passende Polyfill-Bundle nach
+
 ```html
-<!-- load the webcomponents loader, which injects the necessary polyfill bundle -->
-<script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-
-<!-- load the element -->
+<!-- webcomponents-loader einbinden -->
+<script src="..webcomponentsjs/webcomponents-loader.js"></script>
+<!-- Web Component laden -->
 <script type="module" src="my-element.js"></script>
 
-<!-- use the element -->
+<!-- Web Component nutzen -->
 <my-element></my-element>
 ```
 
@@ -1207,19 +1236,19 @@ https://www.webcomponents.org/polyfills
 
 ---
 
-<Slide>
+<Section bg="#618792" logo="white">
 
-# Polyfills Einbindung
-## Demo #8
+# DEMO 8
+## Polyfills   
 
-</Slide>
+</Section>
 
 ---
 
-<Section bg={7} logo="white">
+<Section bg="#774251" logo="white">
 
 # Frameworks
-
+## effiziente Entwicklung von Web Components
 
 </Section>
 
@@ -1228,12 +1257,10 @@ https://www.webcomponents.org/polyfills
 <Slide>
 
 # Frameworks
-## Warum Frameworks?
 
-- Erweitern Funktionalität
-- Erleichtern Aufsetzen von Dev Umgebung
-- Sparen Boilerplate Code
-
+- effizientes Arbeiten
+- kein Boilerplate Code
+- je nach Library oder Framework `npm` erforderlich 
 
 </Slide>
 
@@ -1242,27 +1269,10 @@ https://www.webcomponents.org/polyfills
 <Slide>
 
 # Frameworks
-## Ein paar bekannte Frameworks:
 
-1. Polymer Project
-2. Angular Elements
-3. Stencil
-
-</Slide>
-
----
-
-
-
-<Slide>
-
-# Frameworks
-## Polymer Project
-
-- Bibliotheken und Tools für bauen von web components
-- zwei bekannteste Librarys:
-1. lit-html
-2. LitElement
+- lit-html und LitElement (Polymer)
+- Angular Elements
+- Stencil
 
 </Slide>
 
@@ -1270,54 +1280,49 @@ https://www.webcomponents.org/polyfills
 
 <Slide>
 
-# lit-html
+# Frameworks  
+**lit-html**
 
-- schnelle HTML-Templating Library
-- bauen und updaten von JS HTML Templates
-- re-rendering nur von diffs
-
-</Slide>
-
----
-
-<Slide>
-
-# lit-html
-
-```js
-const myTemplate = (name) => html`
-    <div>
-      Hi, my name is ${name}.
-    </div>
-`;
-```
-</Slide>
-
----
-
-
-
-<Slide>
-
-# LitElement
-
-- Custom Components base class
-- erweitert die Custom Componente mit z.B. neuen Callbacks
-- Komponenten und Properties werden mit Annotations deklariert
-
-</Slide>
-
----
-
-<Slide>
-
-# LitElement
-
-![Code Beispiel leider als bild da es Problemen mit mdx deck macht](./adesso/images/lit-element-beispiel.png)
+- HTML-Templating-Library für JavaScript
+- entwickelt vom Polymer-Project-Team
+- extrem schnell
+- kein virtuelles DOM Diffing
+- aktualisiert nur geänderte Template-Zweige
+- Verschachtelung und Komposition möglich
 
 <Notes>
-Link zu code Beispiel :
-https://lit-element.polymer-project.org/guide/start#use-litelement-typescript-decorators
+
+Polymer-Project arbeitet an unterschiedlichen Libraries, Tools und Standards rund um das Thema Webentwicklung.
+
+</Notes>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Frameworks  
+**lit-html**
+
+- nutzt HTML-Strings
+- Templates werden in Funktionen ausgelagert
+- können wiederholt mit unterschiedlichen Daten aufgerufen werden
+- `TemplateResult` ist das Ergebnis eines solchen Aufrufs
+- mit `render()` kann das Egebnis endgültig gerendert werden
+
+```
+let template = (name) =>  html`
+	<h1>Hallo {name}!</h1>`;
+
+const result = template('Joe');
+render(result, document.body);    
+```
+
+<Notes>
+    vor der geschweiften Klammer muss ein $-Zeichen stehen
+    mdx-deck macht hier Probleme
+    Library ist sehr mächtig: Event-Listener, Verschachtelung und Komposition möglich
 </Notes>
 
 </Slide>
@@ -1325,6 +1330,50 @@ https://lit-element.polymer-project.org/guide/start#use-litelement-typescript-de
 ---
 
 
+<Slide>
+
+# LitElement
+
+- Basisklasse für eigene Custom Elements
+- zusätzliche API, um Properties und Attribute zu verwalten
+- bei Änderungen von Properties werden entsprechende Elemente automatisch aktualisiert
+
+```
+import { LitElement, html } from 'lit-element';
+
+class MyComponent extends LitElement {			
+    ....
+}
+customElements.define('my-component', MyComponent); 
+
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# LitElement
+
+```
+class MyComponent extends LitElement {			
+    static get properties() {
+        return {
+            name: {type: String}
+        }
+    }    
+    render() {
+        return html`<p>Hallo {this.name}</p>`;
+    }
+}
+
+```
+
+</Slide>
+
+
+---
 
 
 <Slide>
