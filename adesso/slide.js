@@ -20,7 +20,7 @@ function formatCurrentDate() {
           <div className='first-line'>
             <div className='slide-number'>{state.index + 1}</div>
             <div className='current-date'>{formatCurrentDate()}</div>  
-            <div className='company-name'>adesso AG</div>
+            <div className='company-name'>Web Components Workshop</div>
           </div>
           <img className='logo' src={logo}></img>
           {children.filter(e => e.props && e.props.mdxType === 'h1').map((h1, idx) => (<h1 key={idx}>{h1.props.children}</h1>))}

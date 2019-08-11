@@ -9,6 +9,14 @@
   color: #0071b9;
 }
 
+.slide-wrapper header.invisible {
+  display: none;
+}
+
+.slide-wrapper header.invisible ~ main {
+  margin-top: 0;
+}
+
 .slide-wrapper header.white {
   color: #ffffff;
 }

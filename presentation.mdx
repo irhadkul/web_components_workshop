@@ -10,10 +10,8 @@ export const themes = [theme, highlight];
 
 <Title bg="rgb(241, 237, 233)">
 
-# Web Components
-## benutzerdefinierte HTML-Elemente
-
-Workshop mit Irhad Kulanic und Lukas Korten
+# Web Components Workshop
+## Irhad Kulanic & Lukas Korten
 
 </Title>
 
@@ -687,21 +685,308 @@ Einstieg: `uebungen/Uebung_4-HTMLTemplate/index.js`
 
 <Slide>
 
-# Übung #5
-- Definiere zwei Slots in HTML Template, ein für das Bild und ein für Info
-- Inhalt für Slots in der Web-Komponente HTML definieren
+# HTML Slots
+## Übung 5 - HTML Slots
+In dieser Übung soll das vorhandene Template mit einem `slot`-Element erweitert werden. 
+Das benutzerdefinierte Markup, welches die Benutzer zwischen den Tags der `my-contact-card`-Web Component eingeben, 
+soll an der Stelle des Standardtextes unter dem `.details`-Container erscheinen.
 
-##### In Template sind die Slots mit z.B. "slot name='test' tag zu kreieren und in den Elementen selbst sollen die HTML Elementen Attribut "slot" haben ("div slot='test'")
-![Aufgabe 5](../adesso/images/Aufgabe_5.png)
+Einstiegsdatei: `uebungen/Uebung_5-HTMLSlot/index.js`
 
 </Slide>
 
 ---
 
-<Section bg={4} logo="white">
+<Section bg="#774251" logo="white">
+
+# Properties & Events
+## Input und Output einer Web Component
+
+</Section>
+
+---
+
+<Slide>
+
+![](./adesso/drawings/properties-events.png)
+
+</Slide>
+
+---
+
+
+<Slide>
+
+# Events
+
+- gehört zum öffentlichen API einer Web Component
+- andere Komponenten über eigene Ereignisse informieren
+- Einsatz der `CustomEvent` API 
+- mit `EventTarget.dispatchEvent()` Event auslösen
+
+<Notes>
+
+    Andere Komponenten können wie gewohnt über addEventListener() auf solche Ereignisse reagieren
+</Notes>
+
+</Slide>
+
+---
+
+
+<Slide>
+
+# Events
+
+```
+// my-button.js
+
+const template = document.createElement('template');
+template.innerHTML = `<button>Klick mich</button>`;
+
+class MyButton extends HTMLElement {    
+    ...
+}
+
+customElements.define('my-button', MyButton);
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Events
+
+```
+// my-button.js
+...
+constructor() {
+    super();
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.buttonElement = this.shadowRoot.querySelector('button');
+    this.buttonElement.addEventListener('click', () => this.handleClick());
+}
+handleClick() {
+    this.dispatchEvent(new CustomEvent('my-click', { detail: 'Klick!'} ));
+}
+...
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Events
+
+```
+// index.js
+
+import './my-button.js';
+
+const button = document.querySelector('my-button');
+button.addEventListener('my-click', e => console.log(e));
+
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Properties
+
+- öffentliches API einer Web Component
+- dynamisch Eigenschaften verändern
+- `set` und `get`-Methoden für jede Property definieren
+- beim Setzen (wenn nötig) Elemente aktualisieren
+
+<Notes>
+    - Warum brauchen wir überhaupt Properties? Wir wollen  
+    dynamisch Eigenschaften einer Web Component verändern.
+</Notes>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Properties
+
+```
+// my-button.js
+
+const template = document.createElement('template');
+template.innerHTML = `<button>Klick mich</button>`;
+
+class MyButton extends HTMLElement {    
+    ...
+}
+
+customElements.define('my-button', MyButton);
+```
+<Notes>
+
+    span-Element als Variable speichern
+
+</Notes>
+
+</Slide>
+
+---
+
+<Slide>
+
+# Properties
+
+```
+const template = document.createElement('template');
+template.innerHTML = `<button>Klick mich</button>`;
+
+class MyButton extends HTMLElement {
+    set label(value) {
+        this._label = value;
+        this.buttonElement.innerText = this._label;
+    }
+    get label() {
+        return this._label;
+    }
+    constructor() { ... }
+    ...
+}
+
+customElements.define('my-button', MyButton);
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Properties
+
+```
+// index.js
+
+import './my-button.js';
+
+const button = document.querySelector('my-button');
+button.label = 'Speichern';
+button.addEventListener('my-click', e => console.log(e));
+
+```
+
+</Slide>
+
+
+---
+
+<Section bg="#774251" logo="white">
+
+# Attribute
+## Eigenschaften im HTML festlegen
+
+</Section>
+
+---
+
+
+<Slide>
+
+# Attribute
+
+```html
+<!-- index.html -->
+
+<my-button></my-button>
+
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Attribute
+
+```html
+<!-- index.html -->
+
+<my-button label="Speichern"></my-button>
+
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Attribute
+
+```
+class MyButton extends HTMLElement {
+ 
+    static get observedAttributes() {
+        return ['label'];
+    }
+    ...
+    
+
+
+
+
+}
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Attribute
+
+```
+class MyButton extends HTMLElement {
+ 
+    static get observedAttributes() {
+        return ['label'];
+    }
+    ...
+    attributeChangedCallback(attrName, oldValue, newValue) {
+        if (attrName === 'label') {
+            this.label = newValue;
+        }
+    }
+}
+```
+
+</Slide>
+
+---
+
+<Section bg="#618792" logo="white">
+
+# DEMO 6
+## Attribute, Properties & Events   
+
+</Section>
+
+---
+
+<Section bg="#774251" logo="white">
 
 # Callbacks
-
+## Der Lebenszyklus eines Custom Elements
 
 </Section>
 
@@ -710,8 +995,9 @@ Einstieg: `uebungen/Uebung_4-HTMLTemplate/index.js`
 <Slide>
 
 # Callbacks
-- Bestandteil eine Komponente
-- Ermöglichen Kontrolle bei Änderungen
+- in jedem Custom Element enthalten
+- steuern das Verhalten einer Web Component
+- ermöglichen Eingriffe bei speziellen Ereignissen und Änderungen
 
 </Slide>
 
@@ -722,84 +1008,11 @@ Einstieg: `uebungen/Uebung_4-HTMLTemplate/index.js`
 # Callbacks
 - connectedCallback
 - disconnectedCallback
-- adoptedCallback
 - attributeChangedCallback
+- adoptedCallback
 
-</Slide>
+können im Lebenszyklus **mehrmals** aufgerufen werden
 
----
-
-<Slide>
-
-# connectedCallback
-- passiert bei jedem Einfügen, und Schieben der Komponente HTML
-- kann mehrmals aufgerufen werden
-- wenn die Komponente auf inneren oder äußeren DOM abhängig ist
-
-
-</Slide>
-
----
-
-<Slide>
-
-# connectedCallback
-```JS
-    constructor(){
-       super();
-    }
-    connectedCallback(){
-        // bei Zugriff auf DOM 
-        // Beispiel: Berechnete Styles abfragen
-    }
-```
-
-</Slide>
-
----
-
-<Slide>
-
-# disconnectedCallback
-- bei "disconnecten" oder löschen von der Seite 
-```JS
-    constructor(){
-       super();
-    }
-    disconnectedCallback(){
-        // Beispiel: setzte alles auf null 
-        // oder remove eventListeners
-    }
-```
-
-</Slide>
-
----
-
-<Slide>
-
-# adoptedCallback
-- bei Schieben der Komponente zu anderen document, z.B. iframe
-- soll nur in komplexen Fällen benutzt werden wo connectedCallback nicht ausreicht
-
-<Notes>
-- nur kurz erwähnen, ist nur in komplexen fällen zu benutzen 
-</Notes>
-
-</Slide>
-
----
-
-<Slide>
-
-# adoptedCallback
-```JS
-    adoptedCallback(){
-        // Beispiel: 
-        // wechsel der ownerDocument
-        // HTML -> iframe mit adoptNode()  
-    }
-```
 </Slide>
 
 ---
@@ -807,77 +1020,18 @@ Einstieg: `uebungen/Uebung_4-HTMLTemplate/index.js`
 <Slide>
 
 # Callbacks
-## Demo #6
+`connectedCallback`
 
-</Slide>
+- wird aufgerufen, wenn das Element in das DOM des Dokuments eingebunden wird
+- nützlich, wenn das Element vom innerem oder äußerem DOM abhängig ist
 
----
-
-<Slide>
-
-# Übung #6
-// TODO: überlegen ob wir es zusammen mit der Aufgabe 7 machen sollen
-
-</Slide>
-
----
-
-<Slide>
-
-# attributeChangedCallback
-- Ermöglicht Kontrolle über Attributen Änderungen (Add, Edit, Remove)
-- Eigene Komponenten "native-like" machen 
-- Bietet dem Anwender Möglichkeit der Inhalt zu Ändern
-- Zum Beispiel: reagieren auf "Theme" Attribut Änderung  
-
-</Slide>
-
----
-
-<Slide>
-
-# attributeChangedCallback
-- besteht aus zwei Teilen:
-1. callback Methode
-2. static get "observedAttributes"
-
-</Slide>
-
----
-
-
-<Slide>
-
-# attributeChangedCallback
-1. callback Methode (attributeChangedCallback)
-- wird jedes Mal ausgeführt bei Attributen Änderungen
-
-</Slide>
-
----
-
-
-<Slide>
-
-# attributeChangedCallback
-1. static get observedAttributes
-- definieret auf welchen Attributen die callback Methode reagieren soll
-
-</Slide>
-
----
-
-<Slide>
-
-# attributeChangedCallback
-
-```JS
-static get observedAttributes(){
-    // return ist immer ein Array
-    return ['text-color']
+```
+...
+connectedCallback() {
+    // z.B. berechnete Styles abfragen
+    // oder auf das DOM zugfreifen
 }
-constructor(){super}
-attributeChangedCallback(attrName, oldValue, newValue){}
+...
 ```
 
 </Slide>
@@ -886,10 +1040,79 @@ attributeChangedCallback(attrName, oldValue, newValue){}
 
 <Slide>
 
-# Callbacks attributeChangedCallback
-## Demo #7
+# Callbacks
+`disconnectedCallback`
+
+- wird aufgerufen, wenn das Element vom DOM des Dokuments getrennt wird
+
+```
+...
+disconnectedCallback() {
+    // z.B. Properties zurücksetzen
+    // oder EventListener entfernen
+}
+...
+```
 
 </Slide>
+
+---
+
+<Slide>
+
+# Callbacks
+- wenn eines der Element-Attribute hinzugefügt, gelöscht oder verändert wurde
+
+`attributeChangedCallback`
+
+```
+...
+attributeChangedCallback(attrName, oldValue, newValue) {
+    if (attrName === 'label') {
+        this.label = newValue;
+    }
+}
+...
+
+```
+
+
+</Slide>
+
+---
+
+<Slide>
+
+# Callbacks
+`adoptedCallback`
+
+- wenn das Element in das DOM eines anderen Dokuments verschoben wird (z.B. `iframe`)
+- nur da wo `connectedCallback` nicht ausreichend ist
+
+```
+...
+adoptedCallback() {
+    // Beispiel: Das Element wurde mit adoptNode() in ein iframe bewegt
+}
+...
+
+```
+
+<Notes>
+- nur kurz erwähnen, ist nur in komplexen Fällen zu benutzen 
+- wenn die adoptNode() Methode benutzt wurde
+</Notes>
+
+</Slide>
+
+---
+
+<Section bg="#618792" logo="white">
+
+# DEMO 7
+## Callbacks  
+
+</Section>
 
 ---
 
