@@ -12,7 +12,7 @@ class MyContactCard extends HTMLElement {
     const style = document.createElement("style");
     style.textContent = `img { max-width:200px; }`;
 
-    imgElement.src = "../global/images/img1.png";
+    imgElement.src = "./images/img1.png";
     pElement.textContent = "Name: Alex Müller";
     divHolder.appendChild(pElement);
 
