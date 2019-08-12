@@ -3,7 +3,7 @@ class DWInput extends HTMLElement {
     constructor() {
         super();
         const pElement = document.createElement('p');
-        pElement.textContent = "Hallo, ich bin ein Custom Element in shadow DOM";
+        pElement.textContent = "Hallo, ich bin ein Custom Element im Shadow DOM";
         // Style
         const style = document.createElement('style');
         style.textContent = `p { color: green; }`;

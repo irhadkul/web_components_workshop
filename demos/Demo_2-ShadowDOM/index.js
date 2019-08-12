@@ -1,9 +1,13 @@
-class DWInput extends HTMLElement {
+class MyComponent extends HTMLElement {
+
     constructor() {
         super();
+        
         const pElement = document.createElement('p');
-        pElement.textContent = "Hallo, ich bin ein p-Element in einer Web Component";
+        pElement.textContent = "Ein p-Element in einer Web Component";
+
         this.appendChild(pElement);
     }
 }
-customElements.define("dw-input", DWInput);
+
+customElements.define("my-component", MyComponent);

@@ -261,13 +261,13 @@ document.createElement('p', { is: 'my-alert' });
 <Slide>
 
 # Custom Elements
-## Übung 1 - Visitenkarte
+## Übung 1 - Ein Custom Element implementieren
 
 Implementiert eine Visitenkarte als ein **automares Custom Element**. 
-Die Visitenkarte soll zunächst einen beliebigen Namen und eines der Bilder aus dem Verzeichnis `uebungen/global/images/` anzeigen.
-Als Einstiegspunkt nutzt bitte die Datei `Uebung_1/index.js`. In dieser Datei ist auch eine kleine Anleitung für die Übung hinterlegt.
+Die Visitenkarte soll einen Namen und eines der mitgelieferten Bilder anzeigen.
+Als Einstiegspunkt für die Übung nutzt bitte die Datei `Uebung_1-CustomElements/index.js`. 
+In dieser Datei ist auch eine kleine Anleitung in Form von TODOs hinterlegt.
 
-![Aufgabe 1](../adesso/images/Aufgabe_1.png)
 
 </Slide>
 
@@ -354,6 +354,7 @@ customElements.define("my-component", MyComponent);
 ```
 
 <Notes>
+
 Unterschied zwischen 'open' und 'closed': 
 Mit 'open' kann über shadowRoot auf Elemente zugegriffen werden, mit 'closed' nicht
 
@@ -386,12 +387,10 @@ Mit 'open' kann über shadowRoot auf Elemente zugegriffen werden, mit 'closed' n
 <Slide>
 
 # Shadow DOM
-## Übung 2 - Visitenkarte mit Shadow DOM erweitern
+## Übung 2 - Shadow DOM einsetzen
 
-In dieser Übung soll das bereits entwickelte Custom Element `DWContactCard` mit Shadow DOM erweitert werden.
-Einstiegsdatei mit zusätzlichen Hinweisen: `uebungen/Uebung_2/index.js`
-
-![Aufgabe 2 Bild](../adesso/images/Aufgabe_2.png)
+In dieser Übung soll das bereits entwickelte Custom Element `MyContractCard` mit Shadow DOM erweitert werden.
+Einstiegsdatei mit zusätzlichen Hinweisen: `uebungen/Uebung_2-ShadowDOM/index.js`
 
 </Slide>
 
@@ -407,7 +406,7 @@ Einstiegsdatei mit zusätzlichen Hinweisen: `uebungen/Uebung_2/index.js`
 
 ```css
 :host {
-    background: white;
+    font-family: sans-serif;
     ...
 }
 ```
@@ -443,7 +442,7 @@ constructor(){
 <Section bg="#618792" logo="white">
 
 # DEMO 3
-## Shadow DOM - Styles
+## Shadow DOM - Styles im Shadow DOM definieren
 
 </Section>
 
@@ -570,8 +569,8 @@ constructor(){
 # HTML Templates
 ## Übung 4 - HTML Template verwenden
 
-In dieser Übung wollen wir uns mit Templates befassen. Lagert alle Kindelemente aus der `DWContractCard`
-in ein Template aus. Das Template soll im JavaScript-Datei `index.js` implementiert und an die `shadowRoot` angehängt werden.
+In dieser Übung wollen wir uns mit Templates befassen. Lagert alle Kindelemente aus der `MyContractCard`
+in ein Template aus. Das Template soll in der JavaScript-Datei `index.js` implementiert und an die `shadowRoot` angehängt werden. 
 
 Einstieg: `uebungen/Uebung_4-HTMLTemplate/index.js`
 

@@ -6,12 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Custom Elements</title>
-    <link rel="stylesheet" href="../global/styles.css" type="text/css" />
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        p {
+            color: blue;
+        }
+    </style>
 </head>
 
 <body>
-    <dw-input></dw-input>
-    <script src="index.js"></script>
+    <p>Ein p-Element im Hauptdokument</p>
+    <my-component></my-component>
+    <script type="module" src="./index.js"></script>
 </body>
 
 </html>
