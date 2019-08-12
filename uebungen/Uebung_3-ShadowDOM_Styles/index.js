@@ -4,23 +4,23 @@
  * 03. TODO - Das style-Element an die shadowRoot anhängen
  */
 
- class DWContactCard extends HTMLElement {
-    constructor() {
-        super();
-        const pElement = document.createElement('p');
-        const imgElement = document.createElement('img');
-        const divHolder = document.createElement('div');
+class MyContactCard extends HTMLElement {
+  constructor() {
+    super();
+    const pElement = document.createElement("p");
+    const imgElement = document.createElement("img");
+    const divHolder = document.createElement("div");
 
-        imgElement.src = '../global/images/img1.png';
-        pElement.textContent = "Name: Alex Müller";
+    imgElement.src = "./images/img1.png";
+    pElement.textContent = "Name: Alex Müller";
 
-        divHolder.appendChild(pElement);
+    divHolder.appendChild(pElement);
 
-        // Shadow DOM
-        this.attachShadow({ mode: 'open' });
+    // Shadow DOM
+    this.attachShadow({ mode: "open" });
 
-        this.shadowRoot.appendChild(imgElement);
-        this.shadowRoot.appendChild(divHolder);
-    }
+    this.shadowRoot.appendChild(imgElement);
+    this.shadowRoot.appendChild(divHolder);
+  }
 }
-customElements.define("dw-contact-card", DWContactCard);
+customElements.define("my-contact-card", MyContactCard);
