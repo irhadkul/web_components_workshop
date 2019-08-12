@@ -1,9 +1,15 @@
 /**
- * 1. Lagert alle Kindelemente aus der MyContactCard in ein Template aus.
- * - Das Template soll als String in die JS-Variable implementiert und an die shadowRoot angehängt werden.
- * */
+ * 01. TODO - Lagert alle Kindelemente aus der MyContactCard in ein Template aus.
+ * 02. TODO - Das Template soll als HTML-String in eine Konstante ausgelagert und an die shadowRoot angehängt werden.
+ **/
 
-const styles = `
+const styleContent = `
+:host {
+    --primary-color: #5965BF;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
 .contact-card {
     border: 2px solid var(--primary-color);
     display: flex;
@@ -59,26 +65,42 @@ button:hover {
     color: white;
 }
 `;
+
  class MyContactCard extends HTMLElement {
   constructor() {
     super();
-    const pElement = document.createElement("p");
-    const imgElement = document.createElement("img");
-    const divHolder = document.createElement("div");
-    // Style
-    const style = document.createElement("style");
-    style.textContent = styles;
+    const containerElement = document.createElement("div");
+    const imgElement = document.createElement('img');
+    const contentElement = document.createElement('div');
+    const nameElement = document.createElement("h1");
+    const mailElement = document.createElement("p");
+    const buttonElement = document.createElement("button");
+    const detailsElement = document.createElement("div");
+    
+    containerElement.classList.add('contact-card');
+    contentElement.classList.add('content');
+    detailsElement.classList.add('details');
 
-    imgElement.src = "./images/img1.png";
-    pElement.textContent = "Name: Alex Müller";
-    divHolder.appendChild(pElement);
+    imgElement.setAttribute('src', './images/img1.png');
+    nameElement.textContent = 'Max Mustermann';
+    mailElement.textContent = 'max.mustermann@example.com';
+    buttonElement.textContent = 'Profilbeschreibung';
+    detailsElement.innerHTML = '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>';
+
+    containerElement.appendChild(imgElement);
+    contentElement.appendChild(nameElement);
+    contentElement.appendChild(mailElement);
+    contentElement.appendChild(buttonElement);
+    contentElement.appendChild(detailsElement);
+    containerElement.appendChild(contentElement);
+
+    const styles = document.createElement('style');
+    styles.textContent = styleContent;
 
     // Shadow DOM
-    const shadowRoot = this.attachShadow({ mode: "open" });
-
-    shadowRoot.appendChild(style);
-    shadowRoot.appendChild(imgElement);
-    shadowRoot.appendChild(divHolder);
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.appendChild(styles);
+    this.shadowRoot.appendChild(containerElement);
   }
 }
 window.customElements.define("my-contact-card", MyContactCard);

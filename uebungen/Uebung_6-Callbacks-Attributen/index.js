@@ -1,16 +1,12 @@
 /**
- * TODO 1. statische get Methode observedAttributes definieren und als return-Wert 'full-name' und 'mail' definieren
- * - Returnwerte sind als strings in einem Array zu definieren
- * TODO 2. get und set Methoden für 'full-name' und 'mail' definieren
- * - In den setter und getter Methoden soll mit internen Properties zu arbeiten, somit es zu kein infinite-loop kommt.
- * - Die Internen Properties sind nach Konvention mit "_" zu schreiben. Zum Beispiel get something()=> this._something
- * TODO 3. attributeChangedCallback Methode implementieren. Die soll auf Attributenänderungen reagieren und die *entsprechende Properties für "full-name" und mail setzen
- * - attributeChangedCallback(attributeName, oldValue, newValue). attributeName ist Name der Attribut die sich geändert hat, z.B. email. oldValue und newValue sind die Werte.
- * TODO 4. In constructor einen "click" Event Listener fürs button Element setzen und interne methode toggleDetails aufrufen
- * TODO 5. Interne Methode toggleDetails implementieren. Die Methode soll sichtbarkeit von dem "details" Absnicht wechseln.
- * - In Styles ist das Element mit der "details" Klasse initial auf display: none gesetzt. Wechsel der Sichtbarkeit soll mit JS passieren.
- * TODO 6. In der methode toggleDetails einen customEvent dispatchen und dabei das Status der Sichtbarkeit der Details Element auch mitsenden.
- * - Dispatchen der Event erfolgt mit dem Aufruf: this.dispatchEvent(new CustomEvent('eventName', { data: yourData }));
+ * 01. TODO - static get observedAttributes implementieren und als Rückgabewert ein Array mit den Strings 'full-name' und 'mail' zurückgeben.
+ * 02. TODO - get und set Methoden für 'full-name' und 'mail' definieren
+ *     In den setter und getter Methoden mit internen Properties arbeiten, um infinite-Loops zu vermeiden
+ *     Die Internen Properties beginnen nach Konvention mit einem "_". Zum Beispiel get something() { return this._something; }
+ * 03. TODO - attributeChangedCallback Methode implementieren. Sie soll auf Attributenänderungen reagieren und entsprechend die Properties "full-name" und "mail" setzen
+ *     attributeChangedCallback(attributeName, oldValue, newValue)
+ * 04. TODO - In der methode toggleDetails() ein CustomEvent dispatchen und dabei den Status der Sichtbarkeit als detail mitsenden.
+ *     this.dispatchEvent(new CustomEvent('eventName', { data: yourData }));
  * */
 
 const template = document.createElement("template");
@@ -98,11 +94,22 @@ button:hover {
 `;
 
 class MyContactCard extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-  }
+    
+    constructor() {
+        super();
+        
+        this.attachShadow({ mode: "open" });
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+       
+        this.detailsElement = this.shadowRoot.querySelector('.details');
+        this.buttonElement = this.shadowRoot.querySelector('button');
+        this.buttonElement.addEventListener('click', () => this.toggleDetails());
+    }
+
+    toggleDetails() {
+        const visible = this.detailsElement.style.display === 'block';
+        this.detailsElement.style.display = visible ? 'none' : 'block';
+    }
 }
 
 customElements.define("my-contact-card", MyContactCard);

@@ -1,12 +1,8 @@
 /**
- * TODO 1. In index.html in my-contact-card slots definieren die die definierte Plathalter in Template befülen
- * - In template sind die Slots als <slot name="test"></slot> zu schreiben
- * - In dem Content von my-contact-card sid das Elemente die slot als Attribut haben
- * */
-
+ * 01. TODO - Ein Slot-Element im Temlate im .details-Container einsetzen
+ **/
 const template = document.createElement("template");
 template.innerHTML = `
-
     <style>
         :host {
             --primary-color: #5965BF;
@@ -60,23 +56,20 @@ template.innerHTML = `
             <h1>Max Mustermann</h1>
             <p class="mail">max.mustermann@example.com</p>
             <div class="details">
-                <p>Max Mustermann ist Software Engineer bei adesso AG 
-                und befasst sich seit über 15 Jahren mit Entwicklung von Webanwendungen.</p>
+                <p>Lorem Ipsum ...</p>
             </div>
         </div>
     </div>
 
 `;
-/**
- * 1. Das Template Element mit Slots Erweitern
- */
 
 class MyContactCard extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-  }
+    constructor() {
+        super();
+
+        this.attachShadow({ mode: "open" });
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
 }
 
 customElements.define("my-contact-card", MyContactCard);

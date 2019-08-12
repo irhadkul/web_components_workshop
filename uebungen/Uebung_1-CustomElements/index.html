@@ -1,79 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Web Components</title>
-    <style>
-      .container {
-        margin: 150px auto 0;
-        width: 500px;
-      }
 
-      .contact-card {
-        border: 2px solid var(--primary-color);
-        display: flex;
-        padding: 2rem;
-        background: white;
-        border-radius: 6px;
-        margin-bottom: 1rem;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Web Components</title>
+  <style>
+    :root {
+      font-size: 20px;
+      font-family: sans-serif;
+      --primary-color: #5965BF;
+    }
 
-      img {
-        border-radius: 50%;
-        width: auto;
-        height: 100px;
-        border: 3px solid var(--primary-color);
-      }
+    .container {
+      margin: 150px auto 0;
+      width: 500px;
+    }
 
-      .content {
-        flex-grow: 1;
-        margin-left: 1rem;
-      }
+    .contact-card {
+      border: 2px solid var(--primary-color);
+      display: flex;
+      padding: 2rem;
+      background: white;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
 
-      h1 {
-        font-size: 1em;
-        font-weight: bold;
-        margin: 0 0 0.5rem;
-        color: var(--primary-color);
-      }
+    img {
+      border-radius: 50%;
+      width: auto;
+      height: 100px;
+      border: 3px solid var(--primary-color);
+    }
 
-      p,
-      .details {
-        font-size: 0.8em;
-        color: gray;
-        margin: 1rem 0;
-      }
+    .content {
+      flex-grow: 1;
+      margin-left: 1rem;
+    }
 
-      .details {
-        display: none;
-      }
+    h1 {
+      font-size: 1em;
+      font-weight: bold;
+      margin: 0 0 0.5rem;
+      color: var(--primary-color);
+    }
 
-      button {
-        font-size: 0.8em;
-        text-transform: uppercase;
-        padding: 0.5rem 0.75rem;
-        background: white;
-        border: 2px solid var(--primary-color);
-        border-radius: 4px;
-        color: var(--primary-color);
-        transition: all 200ms ease-out;
-        cursor: pointer;
-      }
+    p,
+    .details {
+      font-size: 0.8em;
+      color: gray;
+      margin: 1rem 0;
+    }
 
-      button:hover {
-        background: var(--primary-color);
-        color: white;
-      }
-    </style>
-  </head>
+    .details {
+      display: none;
+    }
 
-  <body>
-    <div class="container">
-      <!-- Custom Element hier verwenden -->
-    </div>
+    button {
+      font-size: 0.8em;
+      text-transform: uppercase;
+      padding: 0.5rem 0.75rem;
+      background: white;
+      border: 2px solid var(--primary-color);
+      border-radius: 4px;
+      color: var(--primary-color);
+      transition: all 200ms ease-out;
+      cursor: pointer;
+    }
 
-    <!-- Script einbinden -->
-  </body>
+    button:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Custom Element hier verwenden -->
+  </div>
+
+  <!-- Script einbinden -->
+</body>
+
 </html>

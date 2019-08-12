@@ -260,14 +260,24 @@ document.createElement('p', { is: 'my-alert' });
 
 <Slide>
 
-# Custom Elements
-## Übung 1 - Ein Custom Element implementieren
+# Übung 1 - Ein Custom Element implementieren
 
 Implementiert eine Visitenkarte als ein **automares Custom Element**. 
-Die Visitenkarte soll einen Namen und eines der mitgelieferten Bilder anzeigen.
-Als Einstiegspunkt für die Übung nutzt bitte die Datei `Uebung_1-CustomElements/index.js`. 
-In dieser Datei ist auch eine kleine Anleitung in Form von TODOs hinterlegt.
+Die Visitenkarte soll die folgende HTML-Struktur haben:
 
+```html
+<div class="contact-card">
+    <img src="./img2.png"/>
+    <div class="content">
+        <h1>Max Mustermann</h1>
+        <p class="mail">max.mustermann@example.com</p>
+        <button>Profilbeschreibung</button>
+        <div class="details"><p>Lorem ipsum...</p></div>
+    </div>
+</div>
+
+```
+Einstiegsdatei: `Uebung_1-CustomElements/index.js`. 
 
 </Slide>
 
@@ -386,8 +396,7 @@ Mit 'open' kann über shadowRoot auf Elemente zugegriffen werden, mit 'closed' n
 
 <Slide>
 
-# Shadow DOM
-## Übung 2 - Shadow DOM einsetzen
+# Übung 2 - Shadow DOM
 
 In dieser Übung soll das bereits entwickelte Custom Element `MyContractCard` mit Shadow DOM erweitert werden.
 Einstiegsdatei mit zusätzlichen Hinweisen: `uebungen/Uebung_2-ShadowDOM/index.js`
@@ -398,7 +407,7 @@ Einstiegsdatei mit zusätzlichen Hinweisen: `uebungen/Uebung_2-ShadowDOM/index.j
 
 <Slide>
 
-# Shadow DOM - Styles
+# Shadow DOM Styles
 
 - Im Shadow DOM definiertes CSS wirkt sich nur auf angehängte Elemente aus 
 - globales CSS hat keinen Einfluss auf Elemente im Shadow DOM 
@@ -421,7 +430,7 @@ Einstiegsdatei mit zusätzlichen Hinweisen: `uebungen/Uebung_2-ShadowDOM/index.j
 
 <Slide>
 
-# Shadow DOM - Styles
+# Shadow DOM Styles
 
 ```
 constructor(){
@@ -450,9 +459,8 @@ constructor(){
 
 <Slide>
 
-# Shadow DOM - Styles
+# Übung 3 - Shadow DOM Styles
 
-## Übung 3 - CSS Kapselung
 Eigenes `style`-Element auf der `shadowRoot` definieren und damit das Darstellungsproblem aus der Übung 2 korrigieren.
 Die Einstiegsdatei für diese Übung ist `uebungen/Uebung_3-ShadowDOM_Styles/index.js`.
 
@@ -566,10 +574,9 @@ constructor(){
 
 <Slide>
 
-# HTML Templates
-## Übung 4 - HTML Template verwenden
+# Übung 4 - HTML Template verwenden
 
-In dieser Übung wollen wir uns mit Templates befassen. Lagert alle Kindelemente aus der `MyContractCard`
+In dieser Übung wollen wir uns mit Templates befassen. Lagert alle Kindelemente aus `MyContractCard`
 in ein Template aus. Das Template soll in der JavaScript-Datei `index.js` implementiert und an die `shadowRoot` angehängt werden. 
 
 Einstieg: `uebungen/Uebung_4-HTMLTemplate/index.js`
@@ -683,11 +690,10 @@ Einstieg: `uebungen/Uebung_4-HTMLTemplate/index.js`
 
 <Slide>
 
-# HTML Slots
-## Übung 5 - HTML Slots
+# Übung 5 - HTML Slots
 In dieser Übung soll das vorhandene Template mit einem `slot`-Element erweitert werden. 
 Das benutzerdefinierte Markup, welches die Benutzer zwischen den Tags der `my-contact-card`-Web Component eingeben, 
-soll an der Stelle des Standardtextes unter dem `.details`-Container erscheinen.
+soll an der Stelle des Standardtextes im `.details`-Container erscheinen.
 
 Einstiegsdatei: `uebungen/Uebung_5-HTMLSlot/index.js`
 
@@ -1116,16 +1122,12 @@ adoptedCallback() {
 
 <Slide>
 
-# Properties, Events und Callbacks
-## Übung 6
+# Übung 6 - Properties, Attribute und Events
 
-- Die Komponente soll sich wie ein HTML Element Verhalten
-- Es soll entsprechend auf Attributen-Änderungen reagieren
-- Wenn der Benutzer ein Attribut z.B. "name" ändert oder hinzufügt, es soll auch in der Komponente angezeigt werden
+In dieser Übung geht es um Deklaration benutzerdefinierter Properties und Attribute 
+und das Auslösen von benutzerdefinierten Events.
 
 Einstiegsdatei: `uebungen/Uebung_6-Callbacks-Attributen/index.js`
-
-![Aufgabe 7](../adesso/images/Aufgabe_7.png)
 
 </Slide>
 
