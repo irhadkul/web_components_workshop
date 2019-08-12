@@ -1,7 +1,7 @@
 /**
  * TODO 1. In index.html in my-contact-card slots definieren die die definierte Plathalter in Template befülen
  * - In template sind die Slots als <slot name="test"></slot> zu schreiben
- * - In dem COntent von my-contact-card sid das Elemente die slot asl Attribut haben
+ * - In dem Content von my-contact-card sid das Elemente die slot als Attribut haben
  * */
 
 const template = document.createElement("template");
