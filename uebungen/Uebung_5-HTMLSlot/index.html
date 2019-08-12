@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Web Components</title>
+    <style>
+      .container {
+        margin: 150px auto 0;
+        width: 500px;
+      }
+    </style>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Custom Elements</title>
-    <link rel="stylesheet" href="../global/styles.css" type="text/css" />
-</head>
+  <body>
+    <div class="container">
+      <my-contact-card> </my-contact-card>
+    </div>
 
-<body>
-    <template id="contact-card-template">
-        <style>
-            img {
-                max-width: 200px;
-            }
-        </style>
-        <img src="../global/images/img1.png" />
-        <div class="info">
-            <div class="field-description">Name:</div>
-            <div class="field">Alex Müller</div>
-            <div class="field-description">Email:</div>
-            <div class="field">alex.mueller@test.de</div>
-        </div>
-
-    </template>
-    <dw-contact-card>
-
-    </dw-contact-card>
-    <script src="index.js"></script>
-</body>
-
+    <script type="module" src="./index.js"></script>
+  </body>
 </html>

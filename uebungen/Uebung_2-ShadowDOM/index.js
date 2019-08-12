@@ -3,19 +3,19 @@
  * 02. TODO - alle Kind-Elemente an shadowRoot anhängen
  */
 
-class DWContactCard extends HTMLElement {
-    constructor() {
-        super();
-        const pElement = document.createElement('p');
-        const imgElement = document.createElement('img');
-        const divHolder = document.createElement('div');
+class MyContactCard extends HTMLElement {
+  constructor() {
+    super();
+    const pElement = document.createElement("p");
+    const imgElement = document.createElement("img");
+    const divHolder = document.createElement("div");
 
-        imgElement.src = '../global/images/img1.png';
-        pElement.textContent = "Name: Alex Müller";
+    imgElement.src = "./images/img1.png";
+    pElement.textContent = "Name: Alex Müller";
 
-        divHolder.appendChild(pElement);
-        this.appendChild(imgElement);
-        this.appendChild(divHolder);
-    }
+    divHolder.appendChild(pElement);
+    this.appendChild(imgElement);
+    this.appendChild(divHolder);
+  }
 }
-customElements.define("dw-contact-card", DWContactCard);
+customElements.define("my-contact-card", MyContactCard);
