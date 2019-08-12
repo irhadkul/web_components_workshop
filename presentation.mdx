@@ -1280,8 +1280,7 @@ Empfohlene Polyfills: https://www.webcomponents.org/polyfills
 
 <Slide>
 
-# Frameworks  
-**lit-html**
+# lit-html 
 
 - HTML-Templating-Library für JavaScript
 - entwickelt vom Polymer-Project-Team
@@ -1302,8 +1301,7 @@ Polymer-Project arbeitet an unterschiedlichen Libraries, Tools und Standards run
 
 <Slide>
 
-# Frameworks  
-**lit-html**
+# lit-html 
 
 - nutzt HTML-Strings
 - Templates werden in Funktionen ausgelagert
@@ -1378,12 +1376,27 @@ class MyComponent extends LitElement {
 
 <Slide>
 
-# Frameworks
-## Angular Elements
-- Angular Elements gebaut zu web components
-- Custom components mit angular Elements features wie change detection, data binding und dynamic content (HTML)
-- Registrieren sich wie normale Custom Components 
-- können einzeln ins HTML eingebunden werden 
+# Angular Elements
+
+- `createCustomElement()` konvertiert eine Angular Component in ein Custom Element
+- mit allen Abhängigkeiten und vollständiger Funktionalität
+- das Ergebnis ist ein neues Custom Element 
+- muss über `customElements.define()`registriert werden
+- besonders interessant für dynamische Komponenten
+
+<Notes>
+
+    Angular stellt die Funktion createCustomElement() bereit
+    - HTML-Inhalte, die in Angular direkt in das DOM eingefügt werden, können ohne Angular-Verarbeitung
+    angezeigt werden. Dies gilt aber nicht für dynamische Komponenten, solche die on-the-fly eingebunden werden. 
+    Für diese Art Komponenten muss Code implementiert werden, um sie mit dem HTML-Tag zu verbinden und um sie an der
+    Event-Verarbeitung teilhaben zu lassen. Mit Custom Elements ist dies nicht mehr nötig, das passiert automatisch
+    
+    Z.B. können in Inhalts-basierten Applikationen, wie beispielsweise einer Dokumentation, Autoren benutzerdefinierte 
+    HTML-Tags benutzen wie (<code-snippet/>) ohne Angular zu kennen. Sie müssen nur die Syntax des Tags verstehen, welche 
+    Attribute hat der Tag usw.
+
+</Notes>
 
 </Slide>
 
@@ -1392,77 +1405,121 @@ class MyComponent extends LitElement {
 <Slide>
 
 # Angular Elements
-## Registrierung Ablauf
-![Source: https://angular.io/guide/elements](./adesso/images/angular-elements.png)
 
-</Slide>
-
----
-
-<Slide>
-
-# Angular Elements
-## Angular Element nach export
-
-```html
-<my-popup message="Use Angular!"></my-popup>
+**Beispiel**: eine `PopupComponent` in ein `PopupElement` konvertieren
 
 ```
 
-</Slide>
+@Component({ ... })
+export class AppComponent {
+  constructor(injector:  Injector) {
 
----
+    const PopupElement = createCustomElement(PopupComponent, {injector});    
+    customElements.define('popup-element', PopupElement);
 
-<Slide>
-
-# Stencil
-
->Stencil is a toolchain for building reusable, scalable Design Systems. Generate small, blazing fast, and 100% standards based Web Components that run in every browser.
-
-</Slide>
-
----
-
-<Slide>
-
-# Stencil
-- erweitert web componets mit neuen callbacks, props/attributes
-- TypeScript per Default
-- JSX oder React Style HTML
-- Implementiert Dev umgebung
-- Polyfills 
-- 100% web components zu Laufzeit
-
-</Slide>
-
----
-
-<Slide>
-
-# Stencil
-```js
-import { Component, Prop, h } from '@stencil/core';
-@Component({ tag: 'my-first-component',})
-export class MyComponent {
-  @Prop() name: string;
-  render() {
-    return (<p> My name is {this.name} </p>
-    );
   }
 }
 
 ```
 
+<Notes>
+Der zweite Parameter, ist ein Konfigurations-Objekt (hier nur mit injector) NgElementConfig, um 
+einen NgElementConstructor mit allen Abhängigkeiten zu initialisieren. Optional kann eine NgElementStrategyFactory übergeben werden, 
+mit der die Transformation gesteuert werden kann.
+</Notes>
+
 </Slide>
 
 ---
 
+<Slide>
+
+# Angular Elements
+
+**Mapping**
+- `Input()`-Properties werden automatisch in Attribute umgewandelt
+```
+@Input('myInputProperty') inputProp; 
+// => my-input-property
+```
+
+- `Output()`-EventEmitter werden in `dispatchEvent`-Aufrufe mit `CustomEvent`'s übersetzt
+```
+@Output('myClick') click = new EventEmitter<string>();
+this.click.emit('Hallo Welt!'); 
+// => this.dispatchEvent('myClick', { detail: 'Hallo Welt!'})
+```
+</Slide>
+
+---
+
+<Slide>
+
+# Angular Elements
+
+[Das Popup-Beispiel](https://angular.io/guide/elements#example-a-popup-service)
+
+</Slide>
+
+---
 
 <Slide>
 
 # Stencil
-```html
-<my-first-component name="Max"></my-first-component>
+
+- Eine Sammlung verschiedener Entwicklungs-Tools für die Entwicklung von:
+- Komponentenbibliotheken, Applikationen und Designer Systemen
+- stellt einen Compiler zur Verfügung, um optimierte Web Components zu generieren
+- wurde von Ionic entwickelt
+
+
+<Notes>
+
+Compiler-Ergebnis ist eine optimierte, 100%-native, wiederverwendbare Web Component
+
+Ionic ist ein Unternehmen, das sich darauf spezialisiert hat, auf eine einfache 
+Art und Weise native Mobile Apps und Progressive Web Apps mit modernen 
+Webtechnologien zu entwickeln. 
+
+</Notes>
+
+
+</Slide>
+
+---
+
+<Slide>
+
+# Stencil
+
+**Stencil CLI** ermöglicht:
+
+- die Entwicklung eigener Komponentenbibliotheken
+- Einsatz von Typescript und JSX
+- Auslagerung von CSS und Sass in eigene Dateien
+
+</Slide>
+
+---
+
+<Slide>
+
+# Stencil    
+
+```
+import { Component, Prop, h } from '@stencil/core';
+
+@Component({
+  tag: 'my-component',
+  styleUrl: 'my-component.css',
+  shadow: true
+})
+export class MyComponent {
+  @Prop() title: string;
+  render() {
+    return <div>Hello, World! I'm {this.name}</div>;
+  }
+}
 ```
 
 </Slide>
@@ -1471,15 +1528,19 @@ export class MyComponent {
 
 <Slide>
 
-# Stencil Decorators
-* **@Component()** declares a new web component
-* **@Prop()** declares an exposed property/attribute
-* **@State()** declares an internal state of the component
-* **@Watch()** declares a hook that runs when a property or state changes
-* **@Element()** declares a reference to the host element
-* **@Method()** declares an exposed public method
-* **@Event()** declares a DOM event the component might emit
-* **@Listen()** listens for DOM events
+# Stencil 
+
+**Dekoratoren**
+
+* `@Component()` deklariert eine neue Web Component
+* `@Prop()` eine öffentliche Property bzw. ein Attribut
+* `@State()` eine Property, bei deren Änderung das Template aktualisiert werden soll
+
+* `@Watch()` eine Hook-Methode für Änderungen an `Prop` und `State`-Properties
+* `@Element()` deklariert eine Referenz auf das Host-Element
+* `@Method()` für öffentliche Methoden
+* `@Event()` ein DOM Event, welches von der Component ausgelöst werden kann
+* `@Listen()` Listener für DOM-Events
 
 
 </Slide>
@@ -1487,35 +1548,38 @@ export class MyComponent {
 ---
 <Slide>
 
-# Stencil Callbacks
-* **connectedCallback()** 
-* **disconnectedCallback()** 
-* **componentWillLoad()** 
-* **componentDidLoad()** 
-* **componentWillRender()** 
-* **componentDidRender()** 
-* **componentWillUpdate()**
-* **componentDidUpdate()**
-* **render()**
+# Stencil 
+
+**Callbacks**
+
+* `connectedCallback()`
+* `disconnectedCallback()`
+* `componentWillLoad()`
+* `componentDidLoad()`
+* `componentWillRender()`
+* `componentDidRender()`
+* `componentWillUpdate()`
+* `componentDidUpdate()`
+* `render()`
 
 
 </Slide>
 
 ---
 
-<Slide>
+<Section bg="#618792" logo="white">
 
-# Stencil Aufsetzen
-## Demo #9
+# DEMO 9
+## Stencil aufsetzen   
 
-</Slide>
+</Section>
 
 ---
 
-<Section bg={8} logo="black">
+<Section bg="#774251" logo="white">
 
-# Implementation bestehende Komponenten 
-
+# Einsatz von Fremdbibliotheken
+## Veröffentlichte Web Components im eigenen Projekt nutzen
 
 </Section>
 
@@ -1523,10 +1587,11 @@ export class MyComponent {
 
 <Slide>
 
-# Implementation bestehende Komponenten 
-- web components sind Valides HTML
-- lassen sich in jedes Framework einsetzen 
-- größer Auswahl einzelne Komponenten z.B.
+# Einsatz von Fremdbibliotheken
+
+- Web Components sind valides HTML
+- lassen sich in jedem HTML-basierten Framework einsetzen 
+- große Auswahl veröffentlichter Web Components:
 
 1. https://www.webcomponents.org/elements
 2. https://www.npmjs.com/search?q=keywords:web-components
@@ -1537,27 +1602,27 @@ export class MyComponent {
 
 <Slide>
 
-# Implementation bestehende Komponenten  
-- um bestehende Komponenten zu importieren hat man mehrere Möglichkeiten:
-1. npm Paket ins Projekt importieren
-2. Script in HTML Document
-3. JS modul (JS import * from)
+# Einsatz von Fremdbibliotheken
+
+- verschiedene Ansätze eine Web Component zu importieren:
+
+1. als npm Paket ins Projekt importieren
+2. über `<script>`-Tag in HTML-Dokument einbinden
+3. als ES-Modul in die eigene JavaScript-Datei importieren: `import * from`
 
 </Slide>
 
 ---
 
-<Slide>
+<Section bg="#618792" logo="white">
 
-# Implementation bestehende Komponenten  
-## Demo #10
-- npm i @vaadin --save
-- import '@vaadin/vaadin-date-picker/vaadin-date-picker';
+# DEMO 10
+## Vaading-Web Components einbinden 
 
 <Notes>
+    - npm i @vaadin --save
+    - import '@vaadin/vaadin-date-picker/vaadin-date-picker';
     - vaadin Komponenten: https://vaadin.com/components/vaadin-date-picker/html-examples
 </Notes>
 
-</Slide>
-
----
+</Section>
