@@ -1447,7 +1447,7 @@ mit der die Transformation gesteuert werden kann.
 ```
 @Output('myClick') click = new EventEmitter<string>();
 this.click.emit('Hallo Welt!'); 
-// => this.dispatchEvent('myClick', { detail: 'Hallo Welt!'})
+// => this.dispatchEvent(new CustomElement('myClick', { detail: 'Hallo Welt!'}))
 ```
 </Slide>
 
