@@ -11,7 +11,8 @@ export const themes = [theme, highlight];
 <Title bg="rgb(241, 237, 233)">
 
 # Web Components Workshop
-## Irhad Kulanic & Lukas Korten
+## Irhad Kulanic - Software Engineer @ adesso AG
+
 
 </Title>
 
@@ -26,6 +27,10 @@ export const themes = [theme, highlight];
 ---
 
 <Section bgSrc="./adesso/images/JS-Frameworks.png" logo="white"></Section>
+
+---
+
+<Section bgSrc="./adesso/images/dayssincelastjsframework.png" logo="white"></Section>
 
 ---
 
@@ -701,6 +706,141 @@ Einstiegsdatei: `uebungen/Uebung_5-HTMLSlot/index.js`
 
 ---
 
+
+
+<Section bg="#774251" logo="white">
+
+# Callbacks
+## Der Lebenszyklus eines Custom Elements
+
+</Section>
+
+---
+
+<Slide>
+
+# Callbacks
+- in jedem Custom Element enthalten
+- steuern das Verhalten einer Web Component
+- ermöglichen Eingriffe bei speziellen Ereignissen und Änderungen
+
+</Slide>
+
+---
+
+<Slide>
+
+# Callbacks
+- connectedCallback
+- disconnectedCallback
+- attributeChangedCallback
+- adoptedCallback
+
+können im Lebenszyklus **mehrmals** aufgerufen werden
+
+</Slide>
+
+---
+
+<Slide>
+
+# Callbacks
+`connectedCallback`
+
+- wird aufgerufen, wenn das Element in das DOM des Dokuments eingebunden wird
+- nützlich, wenn das Element vom innerem oder äußerem DOM abhängig ist
+
+```
+...
+connectedCallback() {
+    // z.B. berechnete Styles abfragen
+    // oder auf das DOM zugfreifen
+}
+...
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Callbacks
+`disconnectedCallback`
+
+- wird aufgerufen, wenn das Element vom DOM des Dokuments getrennt wird
+
+```
+...
+disconnectedCallback() {
+    // z.B. Properties zurücksetzen
+    // oder EventListener entfernen
+}
+...
+```
+
+</Slide>
+
+---
+
+<Slide>
+
+# Callbacks
+- wenn eines der Element-Attribute hinzugefügt, gelöscht oder verändert wurde
+
+`attributeChangedCallback`
+
+```
+...
+attributeChangedCallback(attrName, oldValue, newValue) {
+    if (attrName === 'label') {
+        this.label = newValue;
+    }
+}
+...
+
+```
+
+
+</Slide>
+
+---
+
+<Slide>
+
+# Callbacks
+`adoptedCallback`
+
+- wenn das Element in das DOM eines anderen Dokuments verschoben wird (z.B. `iframe`)
+- nur da wo `connectedCallback` nicht ausreichend ist
+
+```
+...
+adoptedCallback() {
+    // Beispiel: Das Element wurde mit adoptNode() in ein iframe bewegt
+}
+...
+
+```
+
+<Notes>
+- nur kurz erwähnen, ist nur in komplexen Fällen zu benutzen 
+- wenn die adoptNode() Methode benutzt wurde
+</Notes>
+
+</Slide>
+
+---
+
+<Section bg="#618792" logo="white">
+
+# DEMO 6
+## Callbacks  
+
+</Section>
+
+---
+
 <Section bg="#774251" logo="white">
 
 # Properties & Events
@@ -980,141 +1120,8 @@ class MyButton extends HTMLElement {
 
 <Section bg="#618792" logo="white">
 
-# DEMO 6
-## Attribute, Properties & Events   
-
-</Section>
-
----
-
-<Section bg="#774251" logo="white">
-
-# Callbacks
-## Der Lebenszyklus eines Custom Elements
-
-</Section>
-
----
-
-<Slide>
-
-# Callbacks
-- in jedem Custom Element enthalten
-- steuern das Verhalten einer Web Component
-- ermöglichen Eingriffe bei speziellen Ereignissen und Änderungen
-
-</Slide>
-
----
-
-<Slide>
-
-# Callbacks
-- connectedCallback
-- disconnectedCallback
-- attributeChangedCallback
-- adoptedCallback
-
-können im Lebenszyklus **mehrmals** aufgerufen werden
-
-</Slide>
-
----
-
-<Slide>
-
-# Callbacks
-`connectedCallback`
-
-- wird aufgerufen, wenn das Element in das DOM des Dokuments eingebunden wird
-- nützlich, wenn das Element vom innerem oder äußerem DOM abhängig ist
-
-```
-...
-connectedCallback() {
-    // z.B. berechnete Styles abfragen
-    // oder auf das DOM zugfreifen
-}
-...
-```
-
-</Slide>
-
----
-
-<Slide>
-
-# Callbacks
-`disconnectedCallback`
-
-- wird aufgerufen, wenn das Element vom DOM des Dokuments getrennt wird
-
-```
-...
-disconnectedCallback() {
-    // z.B. Properties zurücksetzen
-    // oder EventListener entfernen
-}
-...
-```
-
-</Slide>
-
----
-
-<Slide>
-
-# Callbacks
-- wenn eines der Element-Attribute hinzugefügt, gelöscht oder verändert wurde
-
-`attributeChangedCallback`
-
-```
-...
-attributeChangedCallback(attrName, oldValue, newValue) {
-    if (attrName === 'label') {
-        this.label = newValue;
-    }
-}
-...
-
-```
-
-
-</Slide>
-
----
-
-<Slide>
-
-# Callbacks
-`adoptedCallback`
-
-- wenn das Element in das DOM eines anderen Dokuments verschoben wird (z.B. `iframe`)
-- nur da wo `connectedCallback` nicht ausreichend ist
-
-```
-...
-adoptedCallback() {
-    // Beispiel: Das Element wurde mit adoptNode() in ein iframe bewegt
-}
-...
-
-```
-
-<Notes>
-- nur kurz erwähnen, ist nur in komplexen Fällen zu benutzen 
-- wenn die adoptNode() Methode benutzt wurde
-</Notes>
-
-</Slide>
-
----
-
-<Section bg="#618792" logo="white">
-
 # DEMO 7
-## Callbacks  
+## Attribute, Properties & Events   
 
 </Section>
 

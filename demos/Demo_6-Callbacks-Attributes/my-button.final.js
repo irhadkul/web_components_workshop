@@ -6,14 +6,6 @@ class MyButton extends HTMLElement {
     return ["label"];
   }
 
-  set label(value) {
-    this._label = value;
-    this.buttonElement.innerText = this._label;
-  }
-
-  get label() {
-    return this._label;
-  }
 
   constructor() {
     super();
@@ -22,18 +14,13 @@ class MyButton extends HTMLElement {
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     this.buttonElement = this.shadowRoot.querySelector("button");
-    this.buttonElement.addEventListener("click", () => this.handleClick());
   }
 
-  handleClick() {
-    this.dispatchEvent(
-      new CustomEvent("my-click", { detail: "Ich wurde geklickt!" })
-    );
-  }
+
 
   attributeChangedCallback(attrName, oldValue, newValue) {
     if (attrName === "label") {
-      this.label = newValue;
+      this.buttonElement.innerText = newValue;
     }
   }
   connectedCallback() {
